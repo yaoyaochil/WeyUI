@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>1.图标icon/1.基础图标/Text</title>
+    <g id="1.图标icon/1.基础图标/Text" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="矩形" x="0" y="0" width="24" height="24"></rect>
+        <path d="M19.6,4 C19.8209139,4 20,4.22385763 20,4.5 L20,5 C20,5.27614237 19.8209139,5.5 19.6,5.5 L12.75,5.5 L12.75,20.575 C12.75,20.809721 12.5261424,21 12.25,21 L11.75,21 C11.4738576,21 11.25,20.809721 11.25,20.575 L11.25,5.5 L4.4,5.5 C4.1790861,5.5 4,5.27614237 4,5 L4,4.5 C4,4.22385763 4.1790861,4 4.4,4 L19.6,4 Z" id="形状结合" fill="#4C4D4E"></path>
+    </g>
+</svg>

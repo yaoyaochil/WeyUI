@@ -1,0 +1,44 @@
+{
+  "name": "wechat-components-yyc",
+  "description": "集中于微信公众号后台管理组件",
+  "author": "Bodo",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite --config ./build/base.config.ts",
+    "build:doc": "vue-tsc --noEmit && vite build --config ./build/doc.config.ts && node script/copyDir.js",
+    "build:lib": "vue-tsc --noEmit && vite build --config ./build/lib.config.ts",
+    "gen": "node ./script/genNewComp/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yaoyaochil/wechat-components#wechat-components"
+  },
+  "dependencies": {
+    "@arco-plugins/vite-vue": "^1.4.5",
+    "prismjs": "^1.25.0",
+    "vue": "^3.2.23"
+  },
+  "devDependencies": {
+    "@arco-design/web-vue": "^2.52.0",
+    "@types/node": "^16.11.12",
+    "@vitejs/plugin-vue": "^1.10.2",
+    "eslint": "^8.40.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.5.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.6.0",
+    "fs-extra": "^10.0.0",
+    "handlebars": "^4.7.7",
+    "inquirer": "^8.2.0",
+    "sass": "^1.68.0",
+    "typescript": "^4.4.4",
+    "vite": "2.9.16",
+    "vite-plugin-copy": "^0.1.6",
+    "vite-plugin-dts": "^0.9.6",
+    "vite-plugin-md": "^0.11.4",
+    "vue-router": "^4.0.12",
+    "vue-tsc": "^1.8.5"
+  }
+}
