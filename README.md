@@ -28,20 +28,16 @@ npm install @yaoyaochi/weyui
 ## 使用
 ```vue
 <template>
-  <custom-menu @submitData="subMenuData" />
+  <w-offi-account-menu @submitMenuData="getMenu"></w-offi-account-menu>
 </template>
 
-<script setup>
-import { CustomMenu } from '@yaoyaochi/weyui'
+<script setup lang="ts">
+import { WOffiAccountMenu } from '@yaoyaochi/weyui'
 import '@yaoyaochi/weyui/style.css'
-const subMenuData = async(menuData) => {
-  console.log(menuData)
+const getMenu = (data: any) => {
+  console.log(data)
 }
 </script>
-
-<style scoped lang="scss">
-
-</style>
 ```
 
 ## 常见问题
