@@ -1,5 +1,5 @@
 <template>
-  <div style="display: block;flex: 1;height: 100%">
+  <div style="display: block;flex: 1;height: 100%" class="w-offiaccount-menu">
     <a-row>
       <a-col :span="24">
         <div class="header-box">
@@ -108,7 +108,9 @@
                   <div v-if="menu_data.button.length < 3 && menu_data.button.length > 0" class="add-button">
                     <div class="menu_button_preview-line" />
                     <a-button type="text" @click="addMainMenu">
-                      <i class="icon14_menu_add" />
+                      <template #icon>
+                        <icon-plus />
+                      </template>
                     </a-button>
                   </div>
                 </div>
@@ -119,16 +121,15 @@
           <div class="right-editor-box">
             <div v-if="menu_data.button.length > 0" class="attribute-box">
               <!--              没有有二级菜单-->
-              <div v-if="isHaveSubMenu() === false && select_menu_id !== 0 || select_menu_sub_id !== 0" class="custom-no-have-menu-box">
+              <div v-if="have_sub_menu === false && select_menu_id !== 0 || select_menu_sub_id !== 0" class="custom-no-have-menu-box">
                 <h3 style="padding-bottom: 25px">菜单信息</h3>
-                <a-form ref="formVisible" :model="formData" :rules="rule" :style="{ width: '600px' }">
+                <a-form ref="formVisible" :model="formData" :rules="rule" :style="{ width: '500px' }">
                   <div class="custom-menu-name">
                     <a-form-item label="名称"  field="name" required>
                       <a-input v-model="formData.name" placeholder="仅支持中文或数字" />
                       <template #extra>
-                        <div>仅支持中英文和数字，字数不超过4个汉字或8个字母。</div>
+                        <div>仅支持中英文和数字，字数不超过4个汉字</div>
                       </template>
-                      <!--                        <p class="input-tip">仅支持中英文和数字，字数不超过4个汉字或8个字母。</p>-->
                     </a-form-item>
                   </div>
                   <div class="custom-menu-type">
@@ -169,26 +170,29 @@
                 </a-form>
                 <div class="custom-menu-delete">
                   <div class="input-title">
-                    <div class="delete-btn">删除菜单</div>
+                    <a-popconfirm content="删除确认" type="error" @ok="onDelete">
+                      <a-button type="text" class="delete-btn" style="color: #f1164e">删除菜单</a-button>
+                    </a-popconfirm>
                   </div>
                 </div>
               </div>
               <!--              有二级菜单-->
-              <div v-if="isHaveSubMenu() === true && select_menu_id !== 0 && select_menu_sub_id === 0" class="custom-have-menu-box">
+              <div v-if="have_sub_menu === true && select_menu_id !== 0 && select_menu_sub_id === 0" class="custom-have-menu-box">
                 <h3 style="padding-bottom: 25px;">菜单信息</h3>
                 <a-form ref="formVisible" :model="formData" :rules="rule">
                   <div class="custom-menu-name">
                     <a-form-item label="名称"  field="name" required>
                       <a-input v-model="formData.name" placeholder="仅支持中文或数字" />
                       <template #extra>
-                        <div>仅支持中英文和数字，字数不超过4个汉字或8个字母。</div>
+                        <div>仅支持中英文和数字，字数不超过4个汉字</div>
                       </template>
-                      <!--                        <p class="input-tip">仅支持中英文和数字，字数不超过4个汉字或8个字母。</p>-->
                     </a-form-item>
                   </div>
                   <div class="custom-menu-delete">
                     <div class="input-title">
-                      <a-button type="text" class="delete-btn">删除菜单</a-button>
+                      <a-popconfirm content="删除确认" type="error" @ok="onDelete">
+                        <a-button type="text" class="delete-btn" style="color: #f1164e">删除菜单</a-button>
+                      </a-popconfirm>
                     </div>
                   </div>
                 </a-form>
@@ -216,23 +220,18 @@
 </template>
 
 <script lang="ts">
-import { Button,Empty } from '@arco-design/web-vue';
-import '@arco-design/web-vue/dist/arco.css';
 export default {
-  name: 'customMenu',
-  components: {
-    'a-button': Button,
-    'a-empty': Empty,
-  },
+  name: 'w-offiaccount-menu'
 }
 </script>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Modal } from '@arco-design/web-vue';
+import { Modal,Notification } from '@arco-design/web-vue';
 import { IconPlus } from '@arco-design/web-vue/es/icon';
 const select_menu_id = ref(0)
 const select_menu_sub_id = ref(0)
+const have_sub_menu = ref(false)
 
 
 // 菜单类型
@@ -353,6 +352,11 @@ const saveMenu = async () => {
     } else {
       menu.name = formData.value.name
     }
+    // 消息提示保存成功
+    Notification.success({
+      title: '消息',
+      content: '保存成功',
+    })
   } else {
     const sub_menu = menu.sub_button.find((item: any) => item.id === select_menu_sub_id.value)
     sub_menu.name = formData.value.name
@@ -406,6 +410,11 @@ const saveMenu = async () => {
         )
         break
     }
+    // 消息提示保存成功
+    Notification.success({
+      title: '消息',
+      content: '保存成功',
+    })
   }
 }
 
@@ -415,7 +424,7 @@ const emits = defineEmits(['submitData'])
 // 提交菜单数据
 const submitMenuData = async () => {
   if (menu_data.value.button.length === 0) {
-    Modal.info({
+    Modal.warning({
       title: '提醒',
       content: '请先添加菜单',
     })
@@ -427,19 +436,20 @@ const submitMenuData = async () => {
 
 // 预览
 const preview = () => {
-  Modal.info({
+  Modal.warning({
     title: '提醒',
     content: '开源版不支持预览\n如有需要专业版本请联系作者',
   })
 }
 
 // 是否包含二级菜单
-const isHaveSubMenu = () => {
+const isHaveSubMenu = async () => {
   if (menu_data.value.button.length > 0) {
     const menu_id = select_menu_id.value
     const menu = menu_data.value.button.find((item: any) => item.id === menu_id)
+    console.log(menu.sub_button)
     // 如果存在二级菜单
-    if (menu.sub_button && menu.sub_button.length > 0) {
+    if (menu.sub_button !== undefined && menu.sub_button !== null && menu.sub_button !== [] && menu.sub_button.length > 0) {
       return true
     } else {
       return false
@@ -521,6 +531,7 @@ const selectMenu = async (item: number) => {
   const menu = menu_data.value.button.find((item: any) => item.id === select_menu_id.value)
   // 如果没有二级菜单，将form表单的数据设置为一级菜单的数据
   if (menu_data.value.button.find((item: any) => item.id === select_menu_id.value).sub_button.length === 0) {
+    have_sub_menu.value = false
     formData.value.name = menu.name
     menu_type.value = menu.type
     switch (menu_type.value) {
@@ -536,6 +547,7 @@ const selectMenu = async (item: number) => {
         break
     }
   } else {
+    have_sub_menu.value = true
     formData.value.name = menu.name
   }
 }
@@ -584,6 +596,17 @@ const onDelete = async () => {
   for (let i = 0; i < menu_data.value.button.length; i++) {
     if (menu_data.value.button[i].id === menu_id) {
       menu_data.value.button.splice(i, 1)
+      // 如果菜单数量大于0 把相邻的菜单设置为选中
+      if (menu_data.value.button.length > 0) {
+        if (i === menu_data.value.button.length) {
+          select_menu_id.value = menu_data.value.button[i - 1].id
+          await selectMenu(select_menu_id.value)
+        } else {
+          select_menu_id.value = menu_data.value.button[i].id
+          await selectMenu(select_menu_id.value)
+        }
+      }
+
       break // 可以提高性能，因为一旦找到要删除的对象就不需要再继续循环
     }
   }

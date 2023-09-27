@@ -80,7 +80,7 @@ pre {
   border-bottom: 1px dashed #e7e7e7;
   section {
     margin: 15px;
-    background: #f9fafb;
+    background: #f1f2f5;
     padding: 60px;
     border-radius: 7px;
   }

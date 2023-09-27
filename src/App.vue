@@ -43,7 +43,7 @@ body {
     //border-right: 1px solid #ccc;
     display: flex;
     flex-direction: column;
-    background: #f9fafb;
+    //background: #f1f2f5;
   }
   main {
     width: 100%;

@@ -1,6 +1,6 @@
 {
   "name": "@yaoyaochi/weyui",
-  "version": "1.0.3",
+  "version": "1.1.3",
   "main": "kit.es.js",
   "private": false,
   "description": "集中于微信公众号后台管理组件",
