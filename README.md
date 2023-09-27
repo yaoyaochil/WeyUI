@@ -4,7 +4,7 @@
 [![GitHub Stars](https://img.shields.io/github/stars/yaoyaochil/WeyUI.svg)](https://github.com/yaoyaochil/WeyUI/stargazers)
 [![GitHub Issues](https://img.shields.io/github/issues/yaoyaochil/WeyUI.svg)](https://github.com/yaoyaochil/WeyUI/issues)
 [![GitHub Forks](https://img.shields.io/github/forks/yaoyaochil/WeyUI.svg)](https://github.com/yaoyaochil/WeyUI/network)
-![项目截图](./logo.svg)
+![项目截图](./img/logo-md.png)
 
 ## 项目简介
 
@@ -22,7 +22,6 @@ WeyUI 是一个使用 Vite、Vue 3、Arco.Design UI 和 TypeScript 开发的项�
 你可以通过以下命令安装 WeyUI：
 
 ```bash
-# 目前还没有上线npm 后续期待
 npm install @yaoyaochi/weyui
 ```
 
@@ -43,6 +42,12 @@ const subMenuData = async(menuData) => {
 <style scoped lang="scss">
 
 </style>
+```
+
+## 常见问题
+- 如遇见声明类型问题 请在vite-env.d.ts中添加声明
+```typescript
+declare module '@yaoyaochi/weyui'
 ```
 
 ## 贡献
