@@ -1,6 +1,6 @@
 <template>
   <div>
-    <custom-menu @submitData="subMenuData"/>
+    <w-offiaccount-menu @submitData="subMenuData"/>
   </div>
 </template>
 

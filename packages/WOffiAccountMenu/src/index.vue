@@ -2,21 +2,7 @@
   <div style="display: block;flex: 1;height: 100%" class="w-offiaccount-menu">
     <a-row>
       <a-col :span="24">
-        <div class="header-box">
-          <div class="info_tips_wrap">
-            <div class="icon suc_icon" />
-          </div>
-          <div class="content">
-            <div class="in-content">
-              <p class="title">菜单已发布</p>
-              <p class="title">可在手机查看菜单内容，若尚未生效，请稍后查看。若停用菜单， <a
-                style="color: rgba(13,132,255,0.79)"
-                href="https://mp.weixin.qq.com/"
-                target="_blank"
-              >请前往微信官方公众平台</a></p>
-            </div>
-          </div>
-        </div>
+        <header></header>
       </a-col>
     </a-row>
     <a-row>
@@ -229,6 +215,7 @@ export default {
 import { ref } from 'vue'
 import { Modal,Notification } from '@arco-design/web-vue';
 import { IconPlus } from '@arco-design/web-vue/es/icon';
+import Header from './components/header.vue'
 const select_menu_id = ref(0)
 const select_menu_sub_id = ref(0)
 const have_sub_menu = ref(false)

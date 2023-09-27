@@ -1,14 +1,8 @@
 [
   {
-    "compName": "CustomMenu",
+    "compName": "WOffiAccountMenu",
     "compZhName": "自定义菜单",
     "compDesc": "微信公众平台自定义菜单",
-    "compClassName": "custom-menu"
-  },
-  {
-    "compName": "CustomMedia",
-    "compZhName": "素材管理",
-    "compDesc": "基于微信官方素材管理接口封装组件",
-    "compClassName": "custom-media"
+    "compClassName": "w-offiaccount-menu"
   }
 ]

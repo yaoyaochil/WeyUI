@@ -10,20 +10,12 @@ import {createRouter, createWebHashHistory, RouterOptions} from 'vue-router'
 
 const routes = [{
   title: '自定义菜单',
-  name: 'CustomMenu',
-  path: '/components/CustomMenu',
+  name: 'WOffiAccountMenu',
+  path: '/components/WOffiAccountMenu',
   meta: {
     title: '自定义菜单',
   },
   component: () => import('packages/WOffiAccountMenu/docs/README.md'),
-}, {
-  title: '素材管理',
-  name: 'CustomMedia',
-  path: '/components/CustomMedia',
-  meta: {
-    title: '素材管理',
-  },
-  component: () => import('packages/CustomMedia/docs/README.md'),
 }];
 
 const routerConfig = {

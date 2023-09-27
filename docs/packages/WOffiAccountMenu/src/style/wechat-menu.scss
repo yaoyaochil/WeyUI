@@ -167,25 +167,19 @@ body {
             .menu_button_preview-line {
               position: absolute;
               width: 0.5px;
-              height: 33px;
+              height: 30px;
               background: #e3e4e5;
               left: 0;
-              bottom: 15px;
               right: 0;
             }
 
-            .a-button {
-              height: 48px;
-              width: 100%;
-              display: inline-flex;
-              justify-content: center;
-              align-items: center;
-
-              .icon14_menu_add {
-                background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik05LjM3NSAxN2EuNS41IDAgMDAuNS41aC4yNWEuNS41IDAgMDAuNS0uNXYtNi4zNzVIMTdhLjUuNSAwIDAwLjUtLjV2LS4yNWEuNS41IDAgMDAtLjUtLjVoLTYuMzc1VjNhLjUuNSAwIDAwLS41LS41aC0uMjVhLjUuNSAwIDAwLS41LjV2Ni4zNzVIM2EuNS41IDAgMDAtLjUuNXYuMjVhLjUuNSAwIDAwLjUuNWg2LjM3NVYxN3oiIGZpbGw9IiM0QzRENEUiLz48L3N2Zz4=) no-repeat;
-                width: 19px;
-                height: 22px;
-              }
+            .arco-btn {
+              flex: 1;
+              color: #4a4a51;
+            }
+            .arco-btn:hover {
+              color: #4a4a51;
+              background: #ffffff;
             }
           }
 
@@ -201,10 +195,9 @@ body {
             .menu__preview-line {
               position: absolute;
               width: 0.5px;
-              height: 33px;
+              height: 30px;
               background: #e3e4e5;
               left: 0;
-              bottom: 15px;
               right: 0;
             }
 
@@ -279,18 +272,13 @@ body {
                 border-top: 1px solid #E7E7EB;
                 height: 44px;
                 .arco-btn {
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 0;
-                    border: 0;
+                    flex: 1;
                     background: #fff;
-                    color: #07c160;
+                    color: #4a4a51;
                     font-size: 14px;
-                    font-weight: 500;
-                    cursor: pointer;
                     &:hover {
                         background: #fff;
-                        color: #07c160;
+                        color: #4a4a51;
                     }
                 }
               }
@@ -488,118 +476,6 @@ body {
               display: inline-flex;
               padding: 6px 10px;
               white-space: nowrap;
-            }
-
-            .send-select-box::before {
-              margin-right: 2px;
-              display: inline-block;
-              vertical-align: middle;
-              float: left;
-              content: " ";
-              width: 15px;
-              height: 15px;
-              background: transparent url("../static/sender.svg") no-repeat 0 0;
-              background-size: cover;
-            }
-
-            .txt-select-box {
-              background-color: #f6f7f8;
-              display: inline-flex;
-              padding: 6px 10px;
-              white-space: nowrap;
-            }
-
-            .txt-select-box::before {
-              margin-right: 2px;
-              display: inline-block;
-              vertical-align: middle;
-              float: left;
-              content: " ";
-              width: 15px;
-              height: 15px;
-              background: transparent url("../static/sender_text.svg") no-repeat 0 0;
-              background-size: cover;
-            }
-
-            .img-select-box {
-              background-color: #f6f7f8;
-              display: inline-flex;
-              padding: 6px 10px;
-              white-space: nowrap;
-            }
-
-            .img-select-box::before {
-              margin-right: 2px;
-              display: inline-block;
-              vertical-align: middle;
-              float: left;
-              content: " ";
-              width: 15px;
-              height: 15px;
-              background: transparent url("../static/sender_img.svg") no-repeat 0 0;
-              background-size: cover;
-            }
-
-            .radio-select-box {
-              background-color: #f6f7f8;
-              display: inline-flex;
-              padding: 6px 10px;
-              white-space: nowrap;
-            }
-
-            .radio-select-box::before {
-              margin-right: 2px;
-              display: inline-block;
-              vertical-align: middle;
-              float: left;
-              content: " ";
-              width: 15px;
-              height: 15px;
-              background: transparent url("../static/sender_audio.svg") no-repeat 0 0;
-              background-size: cover;
-            }
-
-            .video-snap-select-box {
-              background-color: #f6f7f8;
-              display: inline-flex;
-              padding: 6px 10px;
-              white-space: nowrap;
-            }
-
-            .video-snap-select-box::before {
-              margin-right: 2px;
-              display: inline-block;
-              vertical-align: middle;
-              float: left;
-              content: " ";
-              width: 15px;
-              height: 15px;
-              background: transparent url("../static/video_snap.svg") no-repeat 0 0;
-              background-size: cover;
-            }
-
-            .video-select-box {
-              background-color: #f6f7f8;
-              display: inline-flex;
-              padding: 6px 10px;
-              white-space: nowrap;
-            }
-
-            .video-select-box::before {
-              margin-right: 2px;
-              display: inline-block;
-              vertical-align: middle;
-              float: left;
-              content: " ";
-              width: 15px;
-              height: 15px;
-              background: transparent url("../static/sender_video.svg") no-repeat 0 0;
-              background-size: cover;
-            }
-
-            .select-hover:hover {
-              color: #58be6b;
-              cursor: pointer;
             }
           }
           .input-box-url {

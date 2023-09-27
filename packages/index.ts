@@ -7,15 +7,12 @@
 import { App, Plugin } from 'vue';
 
 import { WOffiAccountMenuPlugin } from './WOffiAccountMenu';
-import { CustomMediaPlugin } from './CustomMedia';
 const ComponentsPlugin: Plugin = {
   install(app: App) {
     WOffiAccountMenuPlugin.install?.(app);
-    CustomMediaPlugin.install?.(app);
   },
 };
 
 export default ComponentsPlugin;
 
 export * from './WOffiAccountMenu'
-export * from './CustomMedia'
