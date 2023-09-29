@@ -12,6 +12,7 @@
     "allowJs": true,
     "lib": ["esnext", "dom"],
     "skipLibCheck": true,
+    "exports": "named", // 添加这一行
     "paths": {
       "packages/*": ["./packages/*"]
     }

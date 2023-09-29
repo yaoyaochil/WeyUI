@@ -1,6 +1,6 @@
 <template>
   <div>
-    <WOffiAccountMenu @submitData="subMenuData"/>
+    <w-offiaccount-menu @submitData="subMenuData"/>
   </div>
 </template>
 

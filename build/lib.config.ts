@@ -2,7 +2,6 @@ import baseConfig from './base.config';
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import dts from 'vite-plugin-dts';
-import path from 'path';
 
 export default defineConfig({
   ...baseConfig,
