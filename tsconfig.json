@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "ES2015",
     "useDefineForClassFields": true,
-    "module": "esnext",
+    "module": "ES2020",
     "moduleResolution": "node",
     "strict": true,
     "jsx": "preserve",
+    "removeComments": true,
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
