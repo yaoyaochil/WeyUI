@@ -30,7 +30,7 @@ const formatTitle = (type) => {
     case 'news':
       return '图文'
     default:
-      return ''
+      return '系统错误'
   }
 }
 </script>
