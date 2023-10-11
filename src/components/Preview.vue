@@ -81,7 +81,7 @@ pre {
   section {
     margin: 15px;
     background: #f1f2f5;
-    padding: 60px;
+    padding: 15px;
     border-radius: 7px;
   }
 }

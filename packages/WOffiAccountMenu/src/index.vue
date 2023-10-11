@@ -215,9 +215,8 @@ export default {
 </script>
 
 <script setup lang="ts">
-import {ref} from 'vue'
+import {ref,onMounted} from 'vue'
 import {Modal, Notification} from '@arco-design/web-vue';
-import {IconPlus} from '@arco-design/web-vue/es/icon';
 import Header from './components/header.vue'
 
 const select_menu_id = ref(0)
@@ -289,7 +288,7 @@ const props = defineProps({
     type: Object,
     default: () => {
       return {
-        button: [],
+        button: [] as any[],
         matchrule: {
           tag_id: '2',
           sex: '1',
@@ -363,9 +362,18 @@ const selectSubMenu = async (item: number) => {
   }
 }
 
+
+
+onMounted(() => {
+  setTimeout(() => {
+    initData()
+    selectMenu(select_menu_id.value)
+  }, 200)
+})
+
 // 初始化数据
 const initData = async () => {
-  if (props.isRemote) {
+  if (props.isRemote && props.menuData && props.menuData.button) {
     // 如果是远程数据 将远程数据赋值给菜单数据 并且给菜单id赋值 值为index+1 二级菜单id值为index+1
     props.menuData.button.forEach((item: any, index: number) => {
       item.id = index + 1
@@ -381,8 +389,6 @@ const initData = async () => {
     menu_data.value.matchrule = props.menuData.matchrule
   }
 }
-initData()
-selectMenu(select_menu_id.value)
 
 // 保存菜单数据
 const saveMenu = async () => {
@@ -527,7 +533,6 @@ const submitMenuData = async () => {
     return
   }
   await saveMenu()
-  console.log(menu_data.value)
   emits('submitData', menu_data.value)
 }
 

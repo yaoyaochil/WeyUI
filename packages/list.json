@@ -4,5 +4,11 @@
     "compZhName": "自定义菜单",
     "compDesc": "微信公众平台自定义菜单",
     "compClassName": "w-offiaccount-menu"
+  },
+  {
+    "compName": "WOffiAccountMedia",
+    "compZhName": "素材管理",
+    "compDesc": "用于公众号素材管理",
+    "compClassName": "woffi-account-media"
   }
 ]

@@ -40,6 +40,10 @@ const getMenu = (data: any) => {
 </script>
 ```
 
+## 相关产品推荐
+- [PowerX 一款以企业微信为基础的微信私域运营开放平台，帮助企业实现引流获客、精细运营。](https://github.com/ArtisanCloud/PowerX)
+- [PowerWechat 一款基于WeChat SDK for Golang，支持小程序、微信支付、企业微信、公众号等全微信生态](https://github.com/ArtisanCloud/PowerWeChat)
+
 ## 常见问题
 - 如遇见声明类型问题 请在vite-env.d.ts中添加声明
 ```typescript
