@@ -2,6 +2,7 @@
   "name": "wechat-components-yyc",
   "description": "集中于微信公众号后台管理组件",
   "author": "Bodo",
+  "version": "1.2.0",
   "license": "MIT",
   "scripts": {
     "dev": "vite --config ./build/base.config.ts",
@@ -17,7 +18,8 @@
     "@arco-plugins/vite-vue": "^1.4.5",
     "axios": "^0.27.2",
     "prismjs": "^1.25.0",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vue-audio-visual": "^3.0.5"
   },
   "devDependencies": {
     "@arco-design/web-vue": "^2.52.0",

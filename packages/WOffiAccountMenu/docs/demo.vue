@@ -6,29 +6,17 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import axios from 'axios'
 import WOffiaccountMenu from "packages/WOffiAccountMenu/src/index.vue";
+import {getMenuDataApi} from "packages/WOffiAccountMenu/docs/api/api";
 const subMenuData = async(menuData: any)=>{
   console.log(menuData)
 }
 const menu_data_list = ref({} as any)
 
-const service = axios.create({
-  baseURL: '',
-  timeout: 99999
-})
-
-const getMenu = async() => {
-  return service({
-      url: 'api/menu.json',
-    method: 'get'
-  })
-}
-
 const getMenuData = async() => {
-  const res = await getMenu()
-  menu_data_list.value.button = res.data.button
-  menu_data_list.value.matchrule = res.data.matchrule
+  const res = getMenuDataApi()
+  menu_data_list.value.button = res.button
+  menu_data_list.value.matchrule = res.matchrule
   console.log(menu_data_list.value)
 }
 getMenuData()

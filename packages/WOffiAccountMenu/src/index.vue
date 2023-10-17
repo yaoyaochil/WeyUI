@@ -215,7 +215,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-import {ref,onMounted} from 'vue'
+import {ref,watch} from 'vue'
 import {Modal, Notification} from '@arco-design/web-vue';
 import Header from './components/header.vue'
 
@@ -264,19 +264,7 @@ const rule = ref({
   ]
 })
 
-// 菜单数据
-const menu_data = ref({
-  button: [] as any[],
-  matchrule: {
-    tag_id: '2',
-    sex: '1',
-    country: '中国',
-    province: '广东',
-    city: '广州',
-    // client_platform_type: '2',
-    language: 'zh_CN'
-  } as any
-})
+
 
 // 组件props
 const props = defineProps({
@@ -302,6 +290,16 @@ const props = defineProps({
     }
   }
 })
+
+// 菜单数据
+let menu_data = ref(props.menuData)
+
+watch(() => props.menuData, (newVal, oldVal) => {
+  if (newVal) {
+    menu_data.value = newVal
+  }
+})
+
 
 // 选择菜单
 const selectMenu = async (item: number) => {
@@ -363,14 +361,6 @@ const selectSubMenu = async (item: number) => {
 }
 
 
-
-onMounted(() => {
-  setTimeout(() => {
-    initData()
-    selectMenu(select_menu_id.value)
-  }, 200)
-})
-
 // 初始化数据
 const initData = async () => {
   if (props.isRemote && props.menuData && props.menuData.button) {
@@ -389,6 +379,8 @@ const initData = async () => {
     menu_data.value.matchrule = props.menuData.matchrule
   }
 }
+
+initData()
 
 // 保存菜单数据
 const saveMenu = async () => {

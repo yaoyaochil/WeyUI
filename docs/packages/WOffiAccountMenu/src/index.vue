@@ -215,25 +215,29 @@ export default {
 </script>
 
 <script setup lang="ts">
-import {ref} from 'vue'
+import {ref,watch} from 'vue'
 import {Modal, Notification} from '@arco-design/web-vue';
-import {IconPlus} from '@arco-design/web-vue/es/icon';
 import Header from './components/header.vue'
 
 const select_menu_id = ref(0)
 const select_menu_sub_id = ref(0)
 const have_sub_menu = ref(false)
 
-
 // 菜单类型
 const menu_type = ref('')
 const menu_type_options = ref([
   {label: '推送事件消息', value: 'click'},
   {label: '网页跳转', value: 'view'},
-  {label: '小程序跳转', value: 'miniprogram'},
+  {label: '小程序跳转', value: 'miniprogram'}
 ])
 // 表单数据
-const formData = ref<Record<string, any>>({})
+const formData = ref({
+  name: '',
+  key: '',
+  url: '',
+  appid: '',
+  pagepath: ''
+} as any)
 
 // 验证规则
 const rule = ref({
@@ -260,19 +264,7 @@ const rule = ref({
   ]
 })
 
-// 菜单数据
-const menu_data = ref({
-  button: [] as any[],
-  matchrule: {
-    tag_id: '2',
-    sex: '1',
-    country: '中国',
-    province: '广东',
-    city: '广州',
-    // client_platform_type: '2',
-    language: 'zh_CN'
-  }
-})
+
 
 // 组件props
 const props = defineProps({
@@ -293,11 +285,21 @@ const props = defineProps({
           city: '广州',
           // client_platform_type: '2',
           language: 'zh_CN'
-        }
+        } as any
       }
     }
   }
 })
+
+// 菜单数据
+let menu_data = ref(props.menuData)
+
+watch(() => props.menuData, (newVal, oldVal) => {
+  if (newVal) {
+    menu_data.value = newVal
+  }
+})
+
 
 // 选择菜单
 const selectMenu = async (item: number) => {
@@ -358,9 +360,10 @@ const selectSubMenu = async (item: number) => {
   }
 }
 
+
 // 初始化数据
 const initData = async () => {
-  if (props.isRemote) {
+  if (props.isRemote && props.menuData && props.menuData.button) {
     // 如果是远程数据 将远程数据赋值给菜单数据 并且给菜单id赋值 值为index+1 二级菜单id值为index+1
     props.menuData.button.forEach((item: any, index: number) => {
       item.id = index + 1
@@ -376,8 +379,8 @@ const initData = async () => {
     menu_data.value.matchrule = props.menuData.matchrule
   }
 }
+
 initData()
-selectMenu(select_menu_id.value)
 
 // 保存菜单数据
 const saveMenu = async () => {
@@ -540,7 +543,7 @@ const isHaveSubMenu = async () => {
     const menu = menu_data.value.button.find((item: any) => item.id === menu_id)
     console.log(menu.sub_button)
     // 如果存在二级菜单
-    return menu.sub_button !== undefined && menu.sub_button !== null && menu.sub_button !== [] && menu.sub_button.length > 0;
+    return menu.sub_button !== undefined && menu.sub_button !== null && menu.sub_button.length > 0;
   }
 }
 
