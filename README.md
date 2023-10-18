@@ -34,34 +34,29 @@ npm install @yaoyaochi/weyui
 #### 自定义菜单
 ```vue
 <template>
-  <w-offi-account-menu :isRemote="true" :menuData="menu_data_list" @submitData="getMenu"></w-offi-account-menu></template>
-  <woffi-account-media
-    @on-down-load="downLoadImage"
-    @on-delete="deleteImg"
-    @page-change="pageChange"
-    @page-size-change="pageSizeChange"
-    @onChangeTab="onChangeTab"
-    @onPreview="onPreview"
-    action="/api/wechat/media/uploadOtherMedia"
-    :media-data="mediaData"
-    :total="total"
-    :current="current"
-    :page-size="pageSize"
-    :page-size-options="[10, 20, 30, 50,100]"
-    :tem-url="temUrl"
-  />
+  <w-offi-account-menu :isRemote="true" :menuData="menu_data_list" @submitData="getMenu"></w-offi-account-menu>
+</template>
+
 <script setup lang="ts">
 import { ref } from 'vue'
 import { WOffiAccountMenu } from '@yaoyaochi/weyui'
-import '@yaoyaochi/weyui/style.css'
-const subMenuData = async(menuData: any)=>{
-  console.log(menuData)
-}
+import {getMenuList} from "@/api/menu.ts";
 const menu_data_list = ref({
   button: [],
-  matchrule: {}
-} as Record<any, any>)
+})
+const getMenu = async () => { // 获取菜单
+  const res:any = await getMenuList()
+  if (res.data.code === 0) {
+    menu_data_list.value.button = res.data.data.menu.button
+  }
+}
+getMenu()
+
+
 </script>
+
+<style scoped>
+</style>
 ```
 
 #### 素材管理

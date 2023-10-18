@@ -215,7 +215,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-import {ref,watch} from 'vue'
+import {ref,watch,PropType,onMounted} from 'vue'
 import {Modal, Notification} from '@arco-design/web-vue';
 import Header from './components/header.vue'
 
@@ -273,31 +273,28 @@ const props = defineProps({
     default: false
   },
   menuData: {
-    type: Object as any,
+    type: Object as PropType<Record<any, any>>,
     default: () => {
       return {
-        button: [] as any[],
-        matchrule: {
-          tag_id: '2',
-          sex: '1',
-          country: '中国',
-          province: '广东',
-          city: '广州',
-          // client_platform_type: '2',
-          language: 'zh_CN'
-        } as any
+        button: ([] as Record<any, any>)
       }
     }
   }
 })
 
 // 菜单数据
-let menu_data = ref(props.menuData)
+let menu_data = ref({
+  button: [] as Record<any, any>,
+})
 
-watch(() => props.menuData, (newVal, oldVal) => {
-  if (newVal) {
+watch(props, (newVal) => {
+  if (newVal.menuData) {
     initData()
   }
+})
+
+onMounted(() => {
+  console.log(props.menuData)
 })
 
 
@@ -363,12 +360,10 @@ const selectSubMenu = async (item: number) => {
 
 // 初始化数据
 const initData = async () => {
-  if (props.isRemote && props.menuData && props.menuData.button) {
-    // 如果是远程数据 将远程数据赋值给菜单数据 并且给菜单id赋值 值为index+1 二级菜单id值为index+1
+  if (props.isRemote) {
+    // 如果是远程数据 将远程数据赋值给menu_data 给每个菜单添加id
     props.menuData.button.forEach((item: any, index: number) => {
       item.id = index + 1
-      // select_menu_id.value 为第一个一级菜单id
-      select_menu_id.value = 1
       if (item.sub_button.length > 0) {
         item.sub_button.forEach((sub_item: any, sub_index: number) => {
           sub_item.id = sub_index + 1
@@ -376,12 +371,12 @@ const initData = async () => {
       }
     })
     menu_data.value.button = props.menuData.button
-    menu_data.value.matchrule = props.menuData.matchrule
+  }
+  if (menu_data.value.button.length > 0) {
+    select_menu_id.value = menu_data.value.button[0].id
     await selectMenu(select_menu_id.value)
   }
 }
-
-initData()
 
 // 保存菜单数据
 const saveMenu = async () => {
