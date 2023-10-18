@@ -11,7 +11,10 @@ import {getMenuDataApi} from "packages/WOffiAccountMenu/docs/api/api";
 const subMenuData = async(menuData: any)=>{
   console.log(menuData)
 }
-const menu_data_list = ref({} as any)
+const menu_data_list = ref({
+  button: [],
+  matchrule: {}
+} as any)
 
 const getMenuData = async() => {
   const res = getMenuDataApi()

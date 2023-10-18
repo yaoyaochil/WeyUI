@@ -1,10 +1,10 @@
 {
   "name": "@yaoyaochi/weyui",
-  "version": "1.2.0",
-  "main": "kit.es.js",
+  "version": "1.2.1",
+  "main": "weyui.es.js",
   "private": false,
   "types": "packages/index.d.ts",
-  "description": "集中于微信公众号后台管理组件",
+  "description": "集中于微信后台管理组件",
   "author": "Bodo/tim",
   "license": "MIT",
   "scripts": {

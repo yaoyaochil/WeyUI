@@ -273,7 +273,7 @@ const props = defineProps({
     default: false
   },
   menuData: {
-    type: Object,
+    type: Object as any,
     default: () => {
       return {
         button: [] as any[],
@@ -296,7 +296,7 @@ let menu_data = ref(props.menuData)
 
 watch(() => props.menuData, (newVal, oldVal) => {
   if (newVal) {
-    menu_data.value = newVal
+    initData()
   }
 })
 
@@ -377,6 +377,7 @@ const initData = async () => {
     })
     menu_data.value.button = props.menuData.button
     menu_data.value.matchrule = props.menuData.matchrule
+    await selectMenu(select_menu_id.value)
   }
 }
 
@@ -694,6 +695,8 @@ const onRightMove = async () => {
   }
   await selectMenu(nextId)
 }
+
+
 </script>
 
 <style scoped lang="scss">
