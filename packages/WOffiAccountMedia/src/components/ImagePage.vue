@@ -33,15 +33,6 @@
 
 <script setup lang="ts">
 import {ref} from 'vue'
-import {
-  IconDelete,
-  IconEye,
-  IconCopy,
-} from '@arco-design/web-vue/es/icon';
-import {
-  Popconfirm as APopconfirm,
-  Image as AImage,
-} from '@arco-design/web-vue';
 const emits = defineEmits(['onDownLoad', 'onDelete'])
 const props = defineProps({
   imageList: {
