@@ -29,7 +29,7 @@ npm install @yaoyaochi/weyui
 - 后续会提供更多组件的使用方法集中于文档站点 目前独立开发中 精力有限
 - 如有兴趣加入 请联系我
 
-<img src="./img/wechat.png" alt="wechat" style="zoom:5%;" />
+<img src="./img/wechaty.JPG" alt="wechat" style="zoom:10%;" />
 
 #### 自定义菜单
 ```vue
