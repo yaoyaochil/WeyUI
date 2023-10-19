@@ -88,13 +88,34 @@
   </div>
 </template>
 
+<script lang="ts">
+export default {
+  name: 'w-offiaccount-media'
+}
+</script>
 <script lang="ts" setup>
 import {ref,watch,PropType} from 'vue'
 import MediaBodyHeader from "./components/MediaBodyHeader.vue";
 import ImagePage from "packages/WOffiAccountMedia/src/components/ImagePage.vue";
 import RadioPage from "packages/WOffiAccountMedia/src/components/RadioPage.vue";
 import VideoPage from "packages/WOffiAccountMedia/src/components/VideoPage.vue";
-import { Modal } from '@arco-design/web-vue';
+import {
+  IconQuestionCircleFill,
+  IconUpload,
+} from '@arco-design/web-vue/es/icon';
+import {
+  Modal as AModal,
+  Button as AButton,
+  Tabs as ATabs,
+  TabPane as ATabPane,
+  Pagination as APagination,
+  Upload as AUpload,
+  Popover as APopover,
+  Empty as AEmpty,
+  Form as AForm,
+  FormItem as AFormItem,
+  Input as AInput,
+} from '@arco-design/web-vue';
 
 const props = defineProps({
   action: {
@@ -213,12 +234,12 @@ const customRequest = (option:any) => { // 上传素材
   xhr.onload = function onload() {
     const res = JSON.parse(xhr.response)
     if (res.code !== 0) {
-      Modal.error({
+      AModal.error({
         content: res.msg,
       });
       return
     }
-    Modal.info({
+    AModal.info({
       content: '上传成功',
     });
     onCancelModal()
@@ -235,32 +256,36 @@ const beforeUpload = async (file:File) => { // 上传前的钩子
     // 图片（image）: 10M，支持bmp/png/jpeg/jpg/gif格式
     if (select_type.value === 'image') {
       if (file.type !== 'image/jpg' && file.type !== 'image/jpeg') {
-        Modal.error({
+        AModal.error({
           content: '仅支持jpg格式!',
         });
         reject('cancel')
+        return
       }
       if (file.size / 1024 / 1024 > 10) {
-        Modal.error({
+        AModal.error({
           content: '上传图片大小不能超过 10M!',
         });
         reject('cancel')
+        return;
       }
     }
 
     //语音（voice）：2M，播放长度不超过60s，mp3/wma/wav/amr格式
     if (select_type.value === 'voice') {
       if (file.type !== 'audio/mp3' && file.type !== 'audio/mpeg') {
-        Modal.error({
+        AModal.error({
           content: '仅支持mp3/mpeg格式!',
         });
         reject('cancel')
+        return;
       }
       if (file.size / 1024 / 1024 > 10) {
-        Modal.error({
+        AModal.error({
           content: '上传音频大小不能超过 10M!',
         });
         reject('cancel')
+        return;
       }
     }
 
@@ -268,22 +293,25 @@ const beforeUpload = async (file:File) => { // 上传前的钩子
     if (select_type.value === 'video') {
       // 如果文件名长度大于128字节
       if (file.name.length > 128) {
-        Modal.error({
+        AModal.error({
           content: '文件名长度不能超过128字节!',
         });
         reject('cancel')
+        return;
       }
       if (file.type !== 'video/mp4') {
-        Modal.error({
+        AModal.error({
           content: '仅支持MP4格式!',
         });
         reject('cancel')
+        return;
       }
       if (file.size / 1024 / 1024 > 10) {
-        Modal.error({
+        AModal.error({
           content: '上传视频大小不能超过 10M!',
         });
         reject('cancel')
+        return;
       }
 
       // 调起弹窗 填写视频名称和描述 等待用户点击确定
@@ -295,16 +323,18 @@ const beforeUpload = async (file:File) => { // 上传前的钩子
     // 缩略图（thumb）：64KB，支持JPG格式
     if (select_type.value === 'thumb') {
       if (file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/gif' && file.type !== 'image/bmp' && file.type !== 'image/jpg') {
-        Modal.error({
+        AModal.error({
           content: '仅支持bmp/png/jpeg/jpg/gif格式!',
         });
         reject('cancel')
+        return;
       }
       if (file.size / 1024 / 1024 > 0.064) {
-        Modal.error({
+        AModal.error({
           content: '上传缩略图大小不能超过 64KB!',
         });
         reject('cancel')
+        return;
       }
     }
     resolve(file)
@@ -333,13 +363,13 @@ const onOkModal = () => { // 确定弹窗
   xhr.onload = function onload() {
     const res = JSON.parse(xhr.response)
     if (res.code !== 0) {
-      Modal.error({
+      AModal.error({
         content: res.msg,
       });
       onCancelModal()
       return
     }
-    Modal.info({
+    AModal.info({
       content: '上传成功',
     });
     onCancelModal()

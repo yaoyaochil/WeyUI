@@ -32,6 +32,16 @@
 <script lang="ts" setup>
 import {ref,watch} from 'vue'
 import { useAVBars } from 'vue-audio-visual'
+import {
+  IconPlayCircleFill as IconPlayCircleFill,
+  IconDelete as IconDelete,
+} from '@arco-design/web-vue/es/icon';
+import {
+  Popconfirm as APopconfirm,
+  Modal as AModal,
+  Spin as ASpin,
+  Button as AButton,
+} from '@arco-design/web-vue';
 // ====================== Modal部分 ======================
 const ModalVisible = ref(false as boolean) // 弹窗显示隐藏
 const audioVisible = ref(null as any)
