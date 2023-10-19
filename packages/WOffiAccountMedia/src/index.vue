@@ -99,23 +99,6 @@ import MediaBodyHeader from "./components/MediaBodyHeader.vue";
 import ImagePage from "packages/WOffiAccountMedia/src/components/ImagePage.vue";
 import RadioPage from "packages/WOffiAccountMedia/src/components/RadioPage.vue";
 import VideoPage from "packages/WOffiAccountMedia/src/components/VideoPage.vue";
-import {
-  IconQuestionCircleFill,
-  IconUpload,
-} from '@arco-design/web-vue/es/icon';
-import {
-  Modal as AModal,
-  Button as AButton,
-  Tabs as ATabs,
-  TabPane as ATabPane,
-  Pagination as APagination,
-  Upload as AUpload,
-  Popover as APopover,
-  Empty as AEmpty,
-  Form as AForm,
-  FormItem as AFormItem,
-  Input as AInput,
-} from '@arco-design/web-vue';
 
 const props = defineProps({
   action: {

@@ -34,16 +34,6 @@
 
 <script setup lang="ts">
 import {watch, ref} from 'vue'
-import {
-  Modal as AModal,
-  Spin as ASpin,
-  Button as AButton,
-  Popconfirm as APopconfirm,
-} from '@arco-design/web-vue';
-import {
-  IconPlayCircleFill as IconPlayCircleFill,
-  IconDelete as IconDelete,
-} from '@arco-design/web-vue/es/icon';
 
 const props = defineProps({
   videoData: {
