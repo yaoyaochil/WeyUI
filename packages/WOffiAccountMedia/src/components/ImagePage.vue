@@ -1,13 +1,15 @@
 <template>
   <div class="image-box">
-    <div class="image-list" v-for="item in props.imageList.item">
+    <div class="image-list" v-for="(item,index) in props.imageList.item">
       <a-image
         style="border-radius: 5px;"
         :src='item.url'
         width="180"
-        :preview-visible="visible2"
+        height="180"
+        fit="cover"
+        :preview-visible="imageVisible[index]"
         :footer-class="['actions-outer']"
-        @preview-visible-change="() => { visible2= false }"
+        @preview-visible-change="() => { imageVisible[index]= false }"
       >
         <template #extra>
           <div class="footer-box">
@@ -15,7 +17,7 @@
               <div class="media-name">{{ item.name }}</div>
             </div>
             <div class="actions">
-<!--              <span class="action" @click="() => { visible2 = true }"><icon-eye /></span>-->
+              <span class="action" @click="() => { imageVisible[index] = true }"><icon-eye /></span>
               <span class="action" @click="onDownLoad(item.url)"><icon-copy /></span>
               <a-popconfirm content="确定要删除此素材吗?" type="warning" @ok="onDelete(item.media_id)">
                 <span class="action"><icon-delete /></span>
@@ -25,11 +27,21 @@
         </template>
       </a-image>
     </div>
+
   </div>
 </template>
 
 <script setup lang="ts">
 import {ref} from 'vue'
+import {
+  IconDelete,
+  IconEye,
+  IconCopy,
+} from '@arco-design/web-vue/es/icon';
+import {
+  Popconfirm as APopconfirm,
+  Image as AImage,
+} from '@arco-design/web-vue';
 const emits = defineEmits(['onDownLoad', 'onDelete'])
 const props = defineProps({
   imageList: {
@@ -42,7 +54,7 @@ const props = defineProps({
   }
 });
 
-const visible2 = ref(false)
+const imageVisible = ref([] as any) // Create an array to track each image's visibility
 const onDelete = (media_id: string) => {
   emits('onDelete', media_id)
 }

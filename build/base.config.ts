@@ -26,8 +26,7 @@ export default defineConfig({
     vue({
       include: [/\.vue$/, /\.md$/],
     }),
-    vitePluginForArco({
-    }),
+    // vitePluginForArco({}),
     Markdown(),
   ],
 });

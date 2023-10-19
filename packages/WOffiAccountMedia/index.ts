@@ -3,7 +3,7 @@ import WOffiAccountMedia from './src/index.vue';
 
 export const WOffiAccountMediaPlugin: Plugin = {
   install(app: App) {
-    app.component('woffi-account-media', WOffiAccountMedia);
+    app.component('w-offiaccount-media', WOffiAccountMedia);
   },
 };
 

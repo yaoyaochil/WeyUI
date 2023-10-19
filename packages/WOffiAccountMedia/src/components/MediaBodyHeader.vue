@@ -12,7 +12,7 @@ const props = defineProps({
   },
   select_type: {
     type: String,
-    default: () => 'image'
+    default: () => 'image' as string
   }
 })
 
