@@ -1,0 +1,16 @@
+{
+  "name": "@yaoyaochi/weyui",
+  "version": "1.4.4",
+  "private": false,
+  "main": "./wey-ui.umd.cjs",
+  "module": "./wey-ui.umd.cjs",
+  "types": "./index.d.ts",
+  "type": "module",
+  "description": "集中于微信后台管理组件",
+  "author": "Bodo/tim",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": []
+}

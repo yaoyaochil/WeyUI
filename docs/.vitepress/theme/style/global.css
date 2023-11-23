@@ -1,0 +1,8 @@
+.example-source {
+    border-radius: 0!important;
+}
+
+.example {
+    border: 1px solid #eaecef!important;
+    border-radius: 8px!important;
+}
