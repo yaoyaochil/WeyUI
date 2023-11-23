@@ -1,32 +1,52 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
+    "target": "ESNext",
     "useDefineForClassFields": true,
-    "module": "ES2020",
-    "moduleResolution": "node",
+    "noImplicitAny": false, // 隐式具有“any”类型
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "strict": true,
     "jsx": "preserve",
-    "removeComments": true,
+    "types": [
+      "vite/client"
+    ],
+    // 如果编译器无法根据变量的使用来判断类型时，将用 any 类型代替
+    // "suppressImplicitAnyIndexErrors": true,
+    // 允许从没有设置默认导出的模块中默认导入。这并不影响代码的输出，仅为了类型检查。
+    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "resolveJsonModule": true,
+    "isolatedModules": true,
     "esModuleInterop": true,
-    "allowJs": true,
-    "lib": ["esnext", "dom"],
-    "skipLibCheck": true,
-    "exports": "named", // 添加这一行
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
+    // 解析非相对模块名的基准目录
+    "baseUrl": "./",
+    // 模块名到基于 baseUrl的路径映射的列表。
     "paths": {
-      "packages/*": ["./packages/*"]
-    }
+      "@": [
+        "packages"
+      ],
+      "@/*": [
+        "packages/*"
+      ]
+    },
+    "skipLibCheck": true
   },
   "include": [
-    "*.ts",
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
     "packages/**/*.ts",
     "packages/**/*.d.ts",
     "packages/**/*.tsx",
     "packages/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
   ]
 }
