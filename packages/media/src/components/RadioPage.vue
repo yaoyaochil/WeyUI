@@ -4,27 +4,27 @@
       <div class="description">{{ item.name }}</div>
       <div class="date-time">上传时间：{{formatTime(item.update_time)}}</div>
       <div class="voice-inner">
-        <a-button class="listen-btn" type="dashed" status="success" @click="showModal(item.media_id,item.name)">
+        <w-button class="listen-btn" type="dashed" status="success" @click="showModal(item.media_id,item.name)">
           <template #icon><icon-play-circle-fill /></template>
           <template #default>试听音频</template>
-        </a-button>
-        <a-popconfirm content="确定要删除此素材吗?" type="warning" @ok="deleteVoice(item.media_id)">
-          <a-button class="delete-btn" type="dashed" status="normal">
+        </w-button>
+        <w-popconfirm content="确定要删除此素材吗?" type="warning" @ok="deleteVoice(item.media_id)">
+          <w-button class="delete-btn" type="dashed" status="normal">
             <template #icon>
               <icon-delete />
             </template>
-          </a-button>
-        </a-popconfirm>
+          </w-button>
+        </w-popconfirm>
       </div>
     </div>
-    <a-modal v-model:visible="ModalVisible" :footer="false" @cancel="onCancelModal" :hide-title="true" modal-class="radio-modal" body-class="radio-modal-body">
-      <a-spin :loading="loading" tip="loading..." style="z-index: 999">
+    <w-modal v-model:visible="ModalVisible" :footer="false" @cancel="onCancelModal" :hide-title="true" modal-class="radio-modal" body-class="radio-modal-body">
+      <w-spin :loading="loading" tip="loading..." style="z-index: 999">
         <div class="voice-modal">
           <canvas ref="canvasVisible" :style="`${loading == false?'width:250px;height:40px;padding-bottom:5px;z-index:99':'display:none'}`"></canvas>
           <audio ref="audioVisible" :style="`${loading == false?'':'display:none'}`"  :src="temUrl" controls></audio>
         </div>
-      </a-spin>
-    </a-modal>
+      </w-spin>
+    </w-modal>
   </div>
 
 </template>

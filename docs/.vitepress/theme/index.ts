@@ -1,9 +1,8 @@
 import DefaultTheme from 'vitepress/theme'
-
+import { EnhanceAppContext } from "vitepress";
 import ArcoVue from '@arco-design/web-vue';
-import '@arco-design/web-vue/dist/arco.css';
-// 图标并进行全局注册
 import ArcoVueIcon from '@arco-design/web-vue/es/icon';
+import '@arco-design/web-vue/dist/arco.css';
 import { VPDemo } from '../vitepress'
 import './style/global.css'
 // 注册组件库
@@ -12,12 +11,9 @@ import '../../public/css/index.css'
 
 export default {
   ...DefaultTheme,
-  enhanceApp(ctx) {
+  enhanceApp(ctx:EnhanceAppContext) {
     DefaultTheme.enhanceApp(ctx)
-    // 注册ElementPlus
-    // ctx.app.use(ElementPlus, {
-    //   locale, // 语言设置
-    // })
+    // @ts-ignore
     ctx.app.use(ArcoVue,{
       componentPrefix: 'w',
     })
@@ -26,6 +22,7 @@ export default {
       ctx.app.component(key, component)
     }
     // 全局注册基础组件
+    // @ts-ignore
     ctx.app.use(WeyUI)
 
     ctx.app.component('Demo', VPDemo)

@@ -19,4 +19,10 @@ export default defineConfig({
       }
     }
   },
+  build: {
+    chunkSizeWarningLimit: 3000 // 以字节为单位的新大小限制
+  },
+  ssr: {
+    noExternal: ['@arco-design/web-vue','scroll-into-view-if-needed'],
+  }
 })

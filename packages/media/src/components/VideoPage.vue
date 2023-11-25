@@ -4,31 +4,31 @@
       <div class="description">{{ item.name }}</div>
       <div class="date-time">上传时间：{{ formatTime(item.update_time) }}</div>
       <div class="video-inner">
-        <a-button class="preview-btn" type="dashed" status="success" @click="showModal(item.media_id)">
+        <w-button class="preview-btn" type="dashed" status="success" @click="showModal(item.media_id)">
           <template #icon>
             <icon-play-circle-fill />
           </template>
           <template #default>观看视频</template>
-        </a-button>
-        <a-popconfirm content="确定要删除此素材吗?" type="warning" @ok="deleteVideo(item.media_id)">
-          <a-button class="delete-btn" type="dashed" status="normal">
+        </w-button>
+        <w-popconfirm content="确定要删除此素材吗?" type="warning" @ok="deleteVideo(item.media_id)">
+          <w-button class="delete-btn" type="dashed" status="normal">
             <template #icon>
               <icon-delete />
             </template>
-          </a-button>
-        </a-popconfirm>
+          </w-button>
+        </w-popconfirm>
       </div>
     </div>
-    <a-modal v-model:visible="ModalVisible" :footer="false" @cancel="onCancelModal" :hide-title="true" modal-class="video-modal" body-class="video-modal-body">
-      <a-spin :loading="loading" tip="loading...">
+    <w-modal v-model:visible="ModalVisible" :footer="false" @cancel="onCancelModal" :hide-title="true" modal-class="video-modal" body-class="video-modal-body">
+      <w-spin :loading="loading" tip="loading...">
         <template #title>
           素材预览
         </template>
         <div class="video-modal">
           <video ref="videoVisible" :style="`${loading == false?'width:400px;height:200px':'display:none'}`" :src="temUrl"></video>
         </div>
-      </a-spin>
-    </a-modal>
+      </w-spin>
+    </w-modal>
   </div>
 </template>
 

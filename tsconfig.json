@@ -5,7 +5,7 @@
     "noImplicitAny": false, // 隐式具有“any”类型
     "module": "ESNext",
     "moduleResolution": "Node",
-    "strict": true,
+    "strict":  true,
     "jsx": "preserve",
     "types": [
       "vite/client"
@@ -39,7 +39,7 @@
     "packages/**/*.ts",
     "packages/**/*.d.ts",
     "packages/**/*.tsx",
-    "packages/**/*.vue"
+    "packages/**/*.vue",
   ],
   "exclude": [
     "node_modules"

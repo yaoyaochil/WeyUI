@@ -1,56 +1,56 @@
-.VPSidebarItem {
-  .items {
-    margin-left: 5px!important;
-    .VPSidebarItem {
-      .items {
-        margin-left: 10px!important;
-      }
-    }
-  }
-}
-
+//.VPSidebarItem {
+//  .items {
+//    margin-left: 5px!important;
+//    .VPSidebarItem {
+//      .items {
+//        margin-left: 10px!important;
+//      }
+//    }
+//  }
+//}
+//
 .VPSidebar {
   background-color: #FFFFFF!important;
 }
 .curtain {
   background-color: #FFFFFF!important;
 }
-
-.VPSidebar[data-v-6750ea26] {
-  padding-left: 25px!important;
-  width: 260px!important;
-}
-
-.VPNav {
-  .VPNavBar {
-    .container {
-      .title {
-        padding-left: 12px!important;
-        width: 200px!important;
-      }
-      .content {
-        .curtain {
-            padding-left: 12px!important;
-            width: 200px!important;
-        }
-        .content-body {
-          margin-left: 0!important;
-          padding-left: 0!important;
-          padding-right: calc((100vw - 1920px) / 2)!important;
-        }
-      }
-    }
-  }
-}
-
-.VPContent.has-sidebar[data-v-98ddab3d] {
-  padding-left: calc((100vw - 2180px) / 2 + var(--vp-sidebar-width));
-  padding-right: calc((100vw - 1920px) / 2);
-}
-
-.VPNavBarAppearance {
-  display: none!important;
-}
-.VPSocialLinks {
-  margin-left: 0!important;
-}
+//
+//.VPSidebar[data-v-6750ea26] {
+//  padding-left: 25px!important;
+//  width: 260px!important;
+//}
+//
+//.VPNav {
+//  .VPNavBar {
+//    .container {
+//      .title {
+//        padding-left: 12px!important;
+//        width: 200px!important;
+//      }
+//      .content {
+//        .curtain {
+//            padding-left: 12px!important;
+//            width: 200px!important;
+//        }
+//        .content-body {
+//          margin-left: 0!important;
+//          padding-left: 0!important;
+//          padding-right: calc((100vw - 1920px) / 2)!important;
+//        }
+//      }
+//    }
+//  }
+//}
+//
+//.VPContent.has-sidebar[data-v-98ddab3d] {
+//  padding-left: calc((100vw - 2180px) / 2 + var(--vp-sidebar-width));
+//  padding-right: calc((100vw - 1920px) / 2);
+//}
+//
+//.VPNavBarAppearance {
+//  display: none!important;
+//}
+//.VPSocialLinks {
+//  margin-left: 0!important;
+//}
