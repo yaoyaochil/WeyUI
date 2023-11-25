@@ -192,7 +192,7 @@ const videoFormData = ref({
 } as Record<string, string>)
 
 
-const emit = defineEmits(['onDownLoad', 'onDelete', 'onChangeTab', 'pageChange', 'pageSizeChange', 'onPreview'])
+const emit = defineEmits(['onDownLoad', 'onDelete', 'onChangeTab', 'pageChange', 'pageSizeChange', 'onPreview','onUploadSuccess'])
 
 // ====================== 事件部分 ======================
 const customRequest = (option: any) => {
@@ -245,7 +245,8 @@ const customRequest = (option: any) => {
 	}
 
 	xhr.send(formData);
-
+  emit('onUploadSuccess')
+  Message.success('上传成功!');
 	return {
 		abort() {
 			xhr.abort();
@@ -255,7 +256,6 @@ const customRequest = (option: any) => {
 
 
 const beforeUpload = async (file:File) => { // 上传前的钩子
-  console.log(file)
   const response = await new Promise((resolve, reject) => {
     // 图片（image）: 10M，支持bmp/png/jpeg/jpg/gif格式
     if (select_type.value === 'image') {
@@ -359,6 +359,7 @@ const onOkModal = () => { // 确定弹窗
       return
     }
 		Message.success('上传成功!');
+    emit('onUploadSuccess')
     onCancelModal()
   };
 }
@@ -392,10 +393,8 @@ const onDeleteMedia = async (media_id: string) => { // 删除素材
 <style scoped lang="scss">
 @import "style/index.scss";
 </style>
-<!--<style>-->
-<!--.video-modal-body {-->
-<!--  display: flex;-->
-<!--  justify-content: center;-->
-<!--  align-items: center;-->
-<!--}-->
-<!--</style>-->
+<style>
+.arco-spin-mask {
+  background-color: transparent!important;
+}
+</style>

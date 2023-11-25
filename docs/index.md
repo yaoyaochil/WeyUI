@@ -10,7 +10,7 @@ hero:
   tagline: 基于微信公众号、微信小程序、企业微信管理高度封装的UI组件库，帮助开发者更快速完成页面开发工作。
   image:
     src: /img/logo-md.png
-    alt: t-ui-plus
+    alt: WeyUI
   actions:
     - theme: brand
       text: 安装指南

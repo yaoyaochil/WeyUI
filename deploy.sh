@@ -8,10 +8,10 @@ npm run docs:build
 cd docs/.vitepress/dist
 
 git init
-git add -A
+git add .
 git commit -m 'deploy'
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
-git push -f https://github.com/yaoyaochil/WeyUI.git master:gh-pages
+git push -f https://github.com/yaoyaochil/WeyUI.git master:main
 
 cd -

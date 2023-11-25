@@ -6,7 +6,7 @@
 import { WMedia } from '@yaoyaochi/weyui'
 ```
 
-### 基础用法
+### 使用方法
 
 :::demo
 WMedia/base
@@ -40,3 +40,4 @@ const Docurl = ref('https://developers.weixin.qq.com/doc/offiaccount/Asset_Manag
 | on-preview    | 预览素材  | `media_id: string` <br/>`select_type:string` |
 | page-change   | 页码改变  | `current: number`                            |
 | on-change-tab | 切换tab | `pageSize: number`                           |
+| on-upload-success | 上传成功事件| - |

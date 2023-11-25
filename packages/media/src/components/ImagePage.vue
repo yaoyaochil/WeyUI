@@ -46,6 +46,8 @@ const props = defineProps({
   }
 });
 
+let imageList = ref()
+
 const imageVisible = ref([] as any) // Create an array to track each image's visibility
 const onDelete = (media_id: string) => {
   emits('onDelete', media_id)
