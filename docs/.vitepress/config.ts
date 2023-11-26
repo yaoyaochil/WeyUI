@@ -5,6 +5,7 @@ export default defineConfig({
   description: '基于Element-plus基础组件封装使用',
   lang: 'cn-ZH',
   lastUpdated: true,
+  base: '/WeyUI/',
   themeConfig: {
     logo: '/img/logo-md.png',
     siteTitle: 'WeyUI文档',
