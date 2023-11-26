@@ -57,45 +57,44 @@ const getMediaByIdData = async (media_id:string,type:string) => { // 获取素�
   }
 }
 
-getMediaData('image')
+// getMediaData('image') // 初始化获取图片素材列表
 
 const onChangeTab = async (item: any) => { // 切换tab
   mediaData.value = {}
   dataType.value = item
-  await getMediaData(item)
+  // await getMediaData(item) // 根据当前素材类型获取素材列表
   console.log(dataType.value)
 }
-const downLoadImage = (item: any) => { // 获取图片URL
-  console.log(item)
+const downLoadImage = (url: string) => { // 获取图片URL
+  console.log(url)
 }
 
-const onDeleteMedia = async (item: any) => { // 删除图片
-  console.log(item)
-  const res = await deleteMedia({media_id: item})
-  if (res.data.code === 0) {
-    await getMediaData(dataType.value)
-  }
+const onDeleteMedia = async (media_id: string) => { // 删除图片
+  console.log(media_id)
+  // const res = await deleteMedia({media_id: item}) // 根据素材id删除素材
+  // if (res.data.code === 0) {
+  //   await getMediaData(dataType.value)
+  // }
 }
 
 const pageChange = async (page: number) => { // 页码改变 建议offset = (page - 1) * pageSize
   current.value = page
-  await getMediaData(dataType.value)
+  // await getMediaData(dataType.value) // 页面改变获取素材列表
 }
 
 const pageSizeChange = async (size: number) => { // 每页条数改变
   pageSize.value = size
-  await getMediaData(dataType.value)
+  // await getMediaData(dataType.value) // 每页条数改变获取素材列表
 }
 
 const onPreview = async (media_id: string,type:string) => { // 预览素材 仅用于语音 视频'
   console.log(media_id,type)
-  await getMediaByIdData(media_id,type)
+  // await getMediaByIdData(media_id,type) // 根据素材id和素材类型获取素材
 }
 
 const onUploadSuccess = async () => {
-  console.log("11111")
   setTimeout(async ()=> {
-    await getMediaData(dataType.value)
+    // await getMediaData(dataType.value) // 上传成功获取素材列表 建议延迟1.5秒 因为上传成功后 腾讯服务器需要时间处理
   },1500)
 }
 </script>
