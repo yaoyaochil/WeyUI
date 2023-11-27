@@ -7,6 +7,8 @@ export default defineConfig({
   lastUpdated: true,
   base: '/WeyUI/',
   themeConfig: {
+    // @ts-ignore
+    appearance: false,
     logo: '/img/logo-md.png',
     siteTitle: 'WeyUI文档',
     outlineTitle: '目录',
@@ -58,12 +60,12 @@ export default defineConfig({
       ],
     },
   },
+  appearance: false,
   markdown: {
     headers: {
       level: [0, 0],
     },
     // light: #f9fafb, dark: --vp-code-block-bg
-    theme: { light: 'github-light', dark: 'github-dark' },
     config: (md) => mdPlugin(md),
   },
 })

@@ -9,6 +9,8 @@ import './style/global.css'
 import WeyUI from '../../../packages'
 import '../../public/css/index.css'
 
+
+
 export default {
   ...DefaultTheme,
   enhanceApp(ctx:EnhanceAppContext) {
@@ -19,6 +21,7 @@ export default {
     })
     // 注册所有图标
     for (const [key, component] of Object.entries(ArcoVueIcon)) {
+      // @ts-ignore
       ctx.app.component(key, component)
     }
     // 全局注册基础组件
