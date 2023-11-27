@@ -18,7 +18,7 @@ npm install @yaoyaochi/weyui -S
 ```js
 // main.ts
 import WeyUI from '@yaoyaochi/weyui'
-import '@yaoyaochi/weyui/lib/style.css'
+import '@yaoyaochi/weyui/style.css'
 const app = createApp(App)
 app.use(WeyUI)
 app.mount('#app')
@@ -28,7 +28,7 @@ app.mount('#app')
 
 ```js
 // 需要在使用的项目的tsconfig.json文件中添加以下
-compilerOptions：{
+compilerOptions: {
   "types": [
     "@yaoyaochi/weyui/components.d.ts",
     ],
