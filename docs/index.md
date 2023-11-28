@@ -26,7 +26,7 @@ features:
     title: 组件丰富
     details: 提供丰富的组件，满足各种业务需求。
   - icon: ✈️
-    title: MIT开源
+    title: Apache-2.0
     details: 在Github上开源，免费商用，欢迎Star。
 ---
 
