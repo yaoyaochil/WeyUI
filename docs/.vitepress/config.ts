@@ -42,6 +42,14 @@ export default defineConfig({
                 { text: '自定义菜单', link: '/components/WCustomMenu/base.md' },
                 { text: '素材管理', link: '/components/WMedia/base.md' },
               ]
+            },
+            {
+              text: '企业微信组件',
+              items: [
+                {
+                  text: '组织架构', link: '/components/WOrganization/base.md'
+                }
+              ]
             }
           ]
         },

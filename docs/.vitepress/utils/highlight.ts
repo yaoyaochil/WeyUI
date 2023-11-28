@@ -24,6 +24,7 @@ export const highlight = (str: string, lang: string) => {
   if (!lang) {
     return wrap(str, 'text')
   }
+  // @ts-ignore
   lang = lang.toLowerCase()
   const rawLang = lang
   if (lang === 'vue' || lang === 'html') {

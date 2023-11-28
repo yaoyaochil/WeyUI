@@ -58,7 +58,7 @@ declare module '@yaoyaochi/weyui'
 
 
 ## 许可证
-这个项目使用 MIT 许可证。
+这个项目使用 [Apache-2.0](./LICENSE) 许可证。
 
 ## 作者
 - 作者名字：[Tim Wang](https://github.com/yaoyaochil)
