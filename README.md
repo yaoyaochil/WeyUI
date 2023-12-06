@@ -4,11 +4,16 @@
 [![GitHub Stars](https://img.shields.io/github/stars/yaoyaochil/WeyUI.svg)](https://github.com/yaoyaochil/WeyUI/stargazers)
 [![GitHub Issues](https://img.shields.io/github/issues/yaoyaochil/WeyUI.svg)](https://github.com/yaoyaochil/WeyUI/issues)
 [![GitHub Forks](https://img.shields.io/github/forks/yaoyaochil/WeyUI.svg)](https://github.com/yaoyaochil/WeyUI/network)
-<img src="./docs/public/img/logo-md.png" alt="项目截图" style="zoom:50%;" />
+[![Doc](https://img.shields.io/badge/Doc-文档链接-blue.svg)](https://yaoyaochil.github.io/WeyUI/)
+<img src="./docs/public/img/logo-md.png" alt="项目截图" style="zoom:30%;" />
 
 ## 项目简介
 
 WeyUI 是一个使用 Vite、Vue 3、Arco.Design UI 和 TypeScript 开发的项目，旨在为微信平台开发提供各种组件，使开发更加便捷。
+
+## 项目文档
+[在线文档](https://yaoyaochil.github.io/WeyUI/) : https://yaoyaochil.github.io/WeyUI/
+
 
 ## 特点
 
