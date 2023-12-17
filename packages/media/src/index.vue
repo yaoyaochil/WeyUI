@@ -2,10 +2,10 @@
   <div class="wey-wechat-media">
     <div class="container-box">
       <div class="media">
-        <w-tabs :destroy-on-hide="true" :default-active-key="select_type" lazy-load @change="onChangeTab">
+        <a-tabs :destroy-on-hide="true" :default-active-key="select_type" lazy-load @change="onChangeTab">
           <template #extra>
             <div class="tips">大小不超过10M，因公众号设置可能会带有水印</div>
-            <w-popover title="说明" position="bottom">
+            <a-popover title="说明" position="bottom">
               <div class="tip-icon">
                 <icon-question-circle-fill />
               </div>
@@ -18,73 +18,73 @@
                 <p style="font-size: 11px;color: #999">视频（video）：10MB，支持MP4格式</p>
                 <p style="font-size: 11px;color: #999">缩略图（thumb）：64KB，支持JPG格式</p>
               </template>
-            </w-popover>
-            <w-upload
+            </a-popover>
+            <a-upload
               :custom-request="customRequest"
-              :show-file-list="false"
+              :shoa-file-list="false"
               @before-upload="beforeUpload"
             >
               <template #upload-button>
-                <w-button type="primary">
+                <a-button type="primary">
                   <template #icon>
                     <icon-upload />
                   </template>
                   <template #default>上传素材</template>
-                </w-button>
+                </a-button>
               </template>
-            </w-upload>
+            </a-upload>
           </template>
-          <w-tab-pane v-for="item in menu_list" :key="item.key" :title="item.title">
+          <a-tab-pane v-for="item in menu_list" :key="item.key" :title="item.title">
             <div class="pane-content">
               <MediaBodyHeader :select_type="item.key" :total="props.total" />
               <div class="content" v-if="select_type === 'image' && props.total !== 0">
                 <ImagePage @on-down-load="downLoadImage" @on-delete="onDeleteMedia" :image-list="props.mediaData" />
               </div>
               <div class="content" v-if="select_type === 'video' && props.total !== 0">
-                <VideoPage :video-data="props.mediaData" @on-delete="onDeleteMedia" :video-url="viewUrl" @preview-video="previewMedia" />
+                <VideoPage :video-data="props.mediaData" @on-delete="onDeleteMedia" :video-url="viewUrl" @previea-video="previewMedia" />
               </div>
               <div class="content" v-if="select_type === 'voice' && props.total !== 0">
-                <RadioPage :voice-data="props.mediaData" @on-delete="onDeleteMedia" :radio-url="viewUrl" @preview-voice="previewMedia" />
+                <RadioPage :voice-data="props.mediaData" @on-delete="onDeleteMedia" :radio-url="viewUrl" @previea-voice="previewMedia" />
               </div>
               <div class="empty" v-if="props.total === 0">
-                <w-empty />
+                <a-empty />
               </div>
-              <w-pagination
+              <a-pagination
                 :total="props.total"
                 :current="props.current"
                 :page-size="props.pageSize"
                 :page-size-options="props.pageSizeOptions"
-                show-page-size
+                shoa-page-size
                 @change="pageChange"
                 @page-size-change="pageSizeChange"
               />
             </div>
-          </w-tab-pane>
-        </w-tabs>
+          </a-tab-pane>
+        </a-tabs>
       </div>
     </div>
 <!--    填写视频名称和描述-->
-    <w-modal v-model:visible="ModalVisible" :footer="false" @cancel="onCancelModal">
+    <a-modal v-model:visible="ModalVisible" :footer="false" @cancel="onCancelModal">
         <template #title>
           素材信息
         </template>
         <div class="video-modal-form">
-          <w-form :model="videoFormData">
-            <w-form-item field="title" tooltip="标题" label="标题">
-              <w-input v-model="videoFormData.title" />
-            </w-form-item>
-            <w-form-item field="introduction" tooltip="视频相关描述" label="素材描述">
-              <w-input v-model="videoFormData.introduction" />
-            </w-form-item>
-            <w-form-item>
+          <a-form :model="videoFormData">
+            <a-form-item field="title" tooltip="标题" label="标题">
+              <a-input v-model="videoFormData.title" />
+            </a-form-item>
+            <a-form-item field="introduction" tooltip="视频相关描述" label="素材描述">
+              <a-input v-model="videoFormData.introduction" />
+            </a-form-item>
+            <a-form-item>
               <div class="btn-group" style="position: absolute;display: flex;align-items: center;right:20px">
-                <w-button type="outline" @click="onCancelModal" style="margin-right: 15px">取消上传</w-button>
-                <w-button type="primary" @click="onOkModal" :loading="spinVisible">提交上传</w-button>
+                <a-button type="outline" @click="onCancelModal" style="margin-right: 15px">取消上传</a-button>
+                <a-button type="primary" @click="onOkModal" :loading="spinVisible">提交上传</a-button>
               </div>
-            </w-form-item>
-          </w-form>
+            </a-form-item>
+          </a-form>
         </div>
-    </w-modal>
+    </a-modal>
   </div>
 </template>
 

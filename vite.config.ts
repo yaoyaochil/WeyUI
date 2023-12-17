@@ -17,7 +17,6 @@ export default defineConfig({
     vueJsx(),
     vueSetupExtend(),
     vitePluginForArco({
-      componentPrefix: 'w',
     }),
     viteCompression({
       verbose: true,

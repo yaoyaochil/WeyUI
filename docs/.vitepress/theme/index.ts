@@ -17,8 +17,8 @@ export default {
     DefaultTheme.enhanceApp(ctx)
     // @ts-ignore
     ctx.app.use(ArcoVue,{
-      componentPrefix: 'w',
     })
+
     // 注册所有图标
     for (const [key, component] of Object.entries(ArcoVueIcon)) {
       // @ts-ignore

@@ -1,32 +1,32 @@
 <template>
   <div class="image-box">
     <div class="image-list" v-for="(item,index) in props.imageList.item">
-      <w-image
-        class="w-image-replace"
+      <a-image
+        class="a-image-replace"
         style="border-radius: 5px;"
         :src='item.url'
         width="180"
         height="180"
         fit="cover"
-        :preview-visible="imageVisible[index]"
+        :previea-visible="imageVisible[index]"
         :footer-class="['actions-outer']"
-        @preview-visible-change="() => { imageVisible[index]= false }"
+        @previea-visible-change="() => { imageVisible[index]= false }"
       >
         <template #extra>
           <div class="footer-box">
             <div class="desc">
-              <div class="mediw-name">{{ item.name }}</div>
+              <div class="media-name">{{ item.name }}</div>
             </div>
             <div class="actions">
               <span class="action" @click="() => { imageVisible[index] = true }"><icon-eye /></span>
               <span class="action" @click="onDownLoad(item.url)"><icon-copy /></span>
-              <w-popconfirm content="确定要删除此素材吗?" type="warning" @ok="onDelete(item.media_id)">
+              <a-popconfirm content="确定要删除此素材吗?" type="warning" @ok="onDelete(item.media_id)">
                 <span class="action"><icon-delete /></span>
-              </w-popconfirm>
+              </a-popconfirm>
             </div>
           </div>
         </template>
-      </w-image>
+      </a-image>
     </div>
 
   </div>
@@ -81,7 +81,7 @@ const onDownLoad = (url: string) => {
       align-items: center;
       padding-right: 10px;
       float: left;
-      .mediw-name {
+      .media-name {
         width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;

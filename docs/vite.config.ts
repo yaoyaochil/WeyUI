@@ -23,6 +23,6 @@ export default defineConfig({
     chunkSizeWarningLimit: 3000 // 以字节为单位的新大小限制
   },
   ssr: {
-    noExternal: ['@arco-design/web-vue','scroll-into-view-if-needed'],
+    noExternal: ['@arco-design/web-vue','scroll-into-view-if-needed','tim-tree-org'],
   }
 })

@@ -4,31 +4,31 @@
       <div class="description">{{ item.name }}</div>
       <div class="date-time">上传时间：{{ formatTime(item.update_time) }}</div>
       <div class="video-inner">
-        <w-button class="preview-btn" type="dashed" status="success" @click="showModal(item.media_id)">
+        <a-button class="previea-btn" type="dashed" status="success" @click="showModal(item.media_id)">
           <template #icon>
             <icon-play-circle-fill />
           </template>
           <template #default>观看视频</template>
-        </w-button>
-        <w-popconfirm content="确定要删除此素材吗?" type="warning" @ok="deleteVideo(item.media_id)">
-          <w-button class="delete-btn" type="dashed" status="normal">
+        </a-button>
+        <a-popconfirm content="确定要删除此素材吗?" type="warning" @ok="deleteVideo(item.media_id)">
+          <a-button class="delete-btn" type="dashed" status="normal">
             <template #icon>
               <icon-delete />
             </template>
-          </w-button>
-        </w-popconfirm>
+          </a-button>
+        </a-popconfirm>
       </div>
     </div>
-    <w-modal v-model:visible="ModalVisible" :footer="false" @cancel="onCancelModal" :hide-title="true" modal-class="video-modal" body-class="video-modal-body">
-      <w-spin :loading="loading" tip="loading...">
+    <a-modal v-model:visible="ModalVisible" :footer="false" @cancel="onCancelModal" :hide-title="true" modal-class="video-modal" body-class="video-modal-body">
+      <a-spin :loading="loading" tip="loading...">
         <template #title>
           素材预览
         </template>
         <div class="video-modal">
           <video ref="videoVisible" :style="`${loading == false?'width:400px;height:200px':'display:none'}`" :src="temUrl"></video>
         </div>
-      </w-spin>
-    </w-modal>
+      </a-spin>
+    </a-modal>
   </div>
 </template>
 
@@ -132,7 +132,7 @@ const formatTime = (time: number) => {
       margin-top: 3px;
       margin-left: 11px;
       position: relative;
-      .preview-btn {
+      .previea-btn {
         // 按钮
         border-radius: 5px;
       }

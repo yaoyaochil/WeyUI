@@ -2,7 +2,7 @@
   <ClientOnly>
     <div class="example-component">
       <component
-        :is="dynamicComponent"
+        :is="dynamicComponent as any"
         v-if="dynamicComponent"
         v-bind="$attrs"
       />

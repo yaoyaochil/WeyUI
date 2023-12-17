@@ -87,6 +87,8 @@
     "components"
   ],
   "dependencies": {
+    "autofit.js": "^3.0.7",
+    "tim-tree-org": "^1.0.0",
     "vue-audio-visual": "^3.0.6"
   }
 }

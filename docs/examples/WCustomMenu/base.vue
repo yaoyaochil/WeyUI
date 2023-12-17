@@ -1,5 +1,5 @@
 <template>
-	<div style="padding: 20px 15px 70px;">
+	<div style="padding: 20px 15px 70px;width: 100%;height: 100%;">
 		<w-custom-menu :menuData="menu_data_list" @submitData="getMenu"></w-custom-menu>
 	</div>
 </template>

@@ -4,14 +4,14 @@
     <p text="sm" v-html="decodedDescription" />
     <div class="example">
       <Example :path="path" />
-      <w-divider class="m-0" />
+      <a-divider class="m-0" />
       <div class="op-btns">
-        <w-tooltip content="复制代码">
+        <a-tooltip content="复制代码">
 					<icon-copy :size="16" class="op-btn" @click="copyCode" />
-        </w-tooltip>
-        <w-tooltip content="查看源代码">
+        </a-tooltip>
+        <a-tooltip content="查看源代码">
 					<icon-code-square :size="16" class="op-btn" @click="toggleSourceVisible()" />
-        </w-tooltip>
+        </a-tooltip>
       </div>
 			<div class="fade" :style="`${sourceVisible?'height:450px':'height:0px'}`">
 				<SourceCode v-show="sourceVisible" :source="source" />
@@ -36,6 +36,7 @@ import { useClipboard, useToggle } from '@vueuse/core'
 import { Message } from '@arco-design/web-vue';
 import Example from './vp-example.vue'
 import SourceCode from './vp-source-code.vue'
+
 
 const props = defineProps<{
   rawSource: string // 源码
@@ -71,6 +72,8 @@ const copyCode = async () => {
 .example {
   border: 1px solid var(--border-color);
   border-radius: var(--el-border-radius-base);
+  height: 100%;
+  width: auto;
   .m-0 {
     margin: 0;
   }
