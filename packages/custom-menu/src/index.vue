@@ -1,12 +1,12 @@
 <template>
-  <div style="display: block;flex: 1;height: 100%" class="w-custom-menu">
-    <w-row>
-      <w-col :span="24">
+  <div style="display: block;width: 100%;height: 100%" class="w-custom-menu">
+    <a-row>
+      <a-col :span="24">
         <w-custom-menu-header></w-custom-menu-header>
-      </w-col>
-    </w-row>
-    <w-row>
-      <w-col :span="24">
+      </a-col>
+    </a-row>
+    <a-row>
+      <a-col :span="24">
         <div class="container-box">
           <!--      左侧菜单编辑器-->
           <div class="phone-box">
@@ -17,20 +17,20 @@
                   <div class="menu__keyboard-icon" />
                 </div>
                 <div class="menu-list">
-                  <w-button v-if="menu_data.button.length <= 0" type="text" class="menu-add-no-menu"
+                  <a-button v-if="menu_data.button.length <= 0" type="text" class="menu-add-no-menu"
                             @click="addMainMenu">
                     <div class="add-no-menu">
                       <div class="menu__add-icon" />
                       <span>添加菜单</span>
                     </div>
-                  </w-button>
+                  </a-button>
                   <div
                     v-for="item in menu_data.button"
                     v-else
                     :key="item.id"
                     :class="`menu-list-item ${select_menu_id === item.id && select_menu_sub_id === 0?'menu-box-shadow':''}`"
                   >
-                    <div class="menu__preview-line" />
+                    <div class="menu__previea-line" />
                     <div
                       :class="`menu-item ${select_menu_id === item.id && select_menu_sub_id === 0?'menu-item-color':''}`"
                       @click="selectMenu(item.id)"
@@ -56,13 +56,13 @@
                       </div>
                       <!--                    二级增加按钮-->
                       <div v-if="item.sub_button.length < 5" class="add-button-sub">
-                        <w-button type="text" title="最多添加5个子菜单" @click="addMSubMenu">
+                        <a-button type="text" title="最多添加5个子菜单" @click="addMSubMenu">
                           <template #icon>
                             <icon-plus />
                           </template>
                           <!-- Use the default slot to avoid extra spaces -->
                           <template #default>添加</template>
-                        </w-button>
+                        </a-button>
                       </div>
                       <i
                         :class="`arrow arrow_out ${select_menu_sub_id === 5 && item.sub_button.length === 5?'arrow_out_select':''}`"
@@ -93,12 +93,12 @@
                   </div>
                   <!--                  主菜单添加按钮-->
                   <div v-if="menu_data.button.length < 3 && menu_data.button.length > 0" class="add-button">
-                    <div class="menu_button_preview-line" />
-                    <w-button type="text" @click="addMainMenu">
+                    <div class="menu_button_previea-line" />
+                    <a-button type="text" @click="addMainMenu">
                       <template #icon>
                         <icon-plus />
                       </template>
-                    </w-button>
+                    </a-button>
                   </div>
                 </div>
               </div>
@@ -111,57 +111,57 @@
               <div v-if="have_sub_menu === false && select_menu_id !== 0 || select_menu_sub_id !== 0"
                    class="custom-no-have-menu-box">
                 <h3 style="padding-bottom: 25px">菜单信息</h3>
-                <w-form ref="formVisible" :model="formData" :rules="rule" :style="{ width: '500px' }">
+                <a-form ref="formVisible" :model="formData" :rules="rule" :style="{ width: '500px' }">
                   <div class="custom-menu-name">
-                    <w-form-item label="名称" field="name" required>
-                      <w-input v-model="formData.name" placeholder="仅支持中文或数字" />
+                    <a-form-item label="名称" field="name" required>
+                      <a-input v-model="formData.name" placeholder="仅支持中文或数字" />
                       <template #extra>
                         <div>仅支持中英文和数字，字数不超过4个汉字</div>
                       </template>
-                    </w-form-item>
+                    </a-form-item>
                   </div>
                   <div class="custom-menu-type">
-                    <w-form-item label="消息类型">
-                      <w-radio-group v-model="menu_type" :default-value="menu_type" :options="menu_type_options"
+                    <a-form-item label="消息类型">
+                      <a-radio-group v-model="menu_type" :default-value="menu_type" :options="menu_type_options"
                                      class="ml-4" />
-                    </w-form-item>
+                    </a-form-item>
                   </div>
                   <div v-if="menu_type === 'click'" class="custom-menu-content">
-                    <w-form-item label="菜单内容" field="key" required>
-                      <w-input v-model="formData.key" placeholder="仅支持中文或数字" />
+                    <a-form-item label="菜单内容" field="key" required>
+                      <a-input v-model="formData.key" placeholder="仅支持中文或数字" />
                       <template #extra>
                         <div>key值为管理平台创建好的功能key</div>
                       </template>
-                    </w-form-item>
+                    </a-form-item>
                   </div>
                   <div v-if="menu_type === 'view'" class="custom-menu-content">
-                    <w-form-item label="网页链接" field="url" required>
-                      <w-input v-model="formData.url" placeholder="公众号链接" />
+                    <a-form-item label="网页链接" field="url" required>
+                      <a-input v-model="formData.url" placeholder="公众号链接" />
                       <template #extra>
                         <div>跳转连接推荐使用安全域名https://</div>
                       </template>
-                    </w-form-item>
+                    </a-form-item>
                   </div>
                   <div v-if="menu_type === 'miniprogram'" class="custom-menu-content">
-                    <w-form-item label="Appid" field="appid" required>
-                      <w-input v-model="formData.appid" placeholder="小程序Appid" />
+                    <a-form-item label="Appid" field="appid" required>
+                      <a-input v-model="formData.appid" placeholder="小程序Appid" />
                       <template #extra>
                         <div>输入对应的小程序Appid 示例：wxd027d2b162044fd5</div>
                       </template>
-                    </w-form-item>
-                    <w-form-item label="页面路径" field="pagepath" required>
-                      <w-input v-model="formData.pagepath" placeholder="页面路径" />
+                    </a-form-item>
+                    <a-form-item label="页面路径" field="pagepath" required>
+                      <a-input v-model="formData.pagepath" placeholder="页面路径" />
                       <template #extra>
                         <div>输入对应的小程序页面路径 示例：/pages/index/index</div>
                       </template>
-                    </w-form-item>
+                    </a-form-item>
                   </div>
-                </w-form>
+                </a-form>
                 <div class="custom-menu-delete">
                   <div class="input-title">
-                    <w-popconfirm content="删除确认" type="error" @ok="onDelete">
-                      <w-button type="text" class="delete-btn" style="color: #f1164e">删除菜单</w-button>
-                    </w-popconfirm>
+                    <a-popconfirm content="删除确认" type="error" @ok="onDelete">
+                      <a-button type="text" class="delete-btn" style="color: #f1164e">删除菜单</a-button>
+                    </a-popconfirm>
                   </div>
                 </div>
               </div>
@@ -169,49 +169,50 @@
               <div v-if="have_sub_menu === true && select_menu_id !== 0 && select_menu_sub_id === 0"
                    class="custom-have-menu-box">
                 <h3 style="padding-bottom: 25px;">菜单信息</h3>
-                <w-form ref="formVisible" :model="formData" :rules="rule">
+                <a-form ref="formVisible" :model="formData" :rules="rule">
                   <div class="custom-menu-name">
-                    <w-form-item label="名称" field="name" required>
-                      <w-input v-model="formData.name" placeholder="仅支持中文或数字" />
+                    <a-form-item label="名称" field="name" required>
+                      <a-input v-model="formData.name" placeholder="仅支持中文或数字" />
                       <template #extra>
                         <div>仅支持中英文和数字，字数不超过4个汉字</div>
                       </template>
-                    </w-form-item>
+                    </a-form-item>
                   </div>
                   <div class="custom-menu-delete">
                     <div class="input-title">
-                      <w-popconfirm content="删除确认" type="error" @ok="onDelete">
-                        <w-button type="text" class="delete-btn" style="color: #f1164e">删除菜单</w-button>
-                      </w-popconfirm>
+                      <a-popconfirm content="删除确认" type="error" @ok="onDelete">
+                        <a-button type="text" class="delete-btn" style="color: #f1164e">删除菜单</a-button>
+                      </a-popconfirm>
                     </div>
                   </div>
-                </w-form>
+                </a-form>
               </div>
             </div>
             <!--            没有菜单-->
             <div v-if="menu_data.button.length === 0" class="attribute-box">
-              <w-empty description="你未添加自定义菜单，点击左侧添加菜单为公众号创建菜单栏。" />
+              <a-empty description="你未添加自定义菜单，点击左侧添加菜单为公众号创建菜单栏。" />
             </div>
             <!--            右侧底部按钮组-->
             <div class="menu__edit-action-bar">
               <div class="menu__edit-action-inner">
                 <div class="menu__edit-button">
-                  <w-button @click="preview">预览</w-button>
-                  <w-button type="primary" @click="submitMenuData">保存并发布</w-button>
+                  <a-button @click="preview">预览</a-button>
+                  <a-button type="primary" @click="submitMenuData">保存并发布</a-button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </w-col>
-    </w-row>
+      </a-col>
+    </a-row>
   </div>
 </template>
 
-<script setup lang="ts" name="custom-menu">
+<script setup lang="ts" name="w-custom-menu">
 import {ref,watch,PropType,onMounted} from 'vue'
 import {Modal, Notification,Message} from '@arco-design/web-vue';
 import WCustomMenuHeader from './components/header.vue'
+
 
 const select_menu_id = ref(0)
 const select_menu_sub_id = ref(0)
@@ -246,12 +247,12 @@ const rule = ref({
   ],
   appid: [
     {required: true, message: '请输入小程序Appid', trigger: 'blur'},
-    {match: /^[w-zA-Z0-9]{18}$/, message: '请输入正确的小程序Appid', trigger: 'blur'}
+    {match: /^[a-zA-Z0-9]{18}$/, message: '请输入正确的小程序Appid', trigger: 'blur'}
   ],
   pagepath: [
     {required: true, message: '请输入页面路径', trigger: 'blur'},
     // 是否是小程序页面路径/pages/index/index
-    {match: /^\/pages\/[w-zA-Z0-9]+\/[w-zA-Z0-9]+$/, message: '请输入正确的页面路径', trigger: 'blur'}
+    {match: /^\/pages\/[a-zA-Z0-9]+\/[a-zA-Z0-9]+$/, message: '请输入正确的页面路径', trigger: 'blur'}
   ],
   key: [
     {required: true, message: '请输入菜单内容'}

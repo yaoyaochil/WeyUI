@@ -11,5 +11,7 @@
     "noImplicitAny": false,
     "skipLibCheck": true,
     "jsx": "preserve",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment"
   }
 }

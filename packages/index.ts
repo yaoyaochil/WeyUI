@@ -2,6 +2,7 @@ import type { Component, App } from 'vue'
 import WCustomMenu from "./custom-menu";
 import WMedia from "./media";
 import WOrganization from "./organization";
+import WCard from "./card";
 // 存储组件列表
 const components: {
   [propName: string]: Component
@@ -9,6 +10,7 @@ const components: {
   WCustomMenu,
   WMedia,
   WOrganization,
+  WCard,
 }
 // 插件声明：声明所有插件
 // 插件注册：在 Vue 项目的入口文件中，通过 ( app.use(插件) ) 进行注册
@@ -30,6 +32,7 @@ export {
   WCustomMenu,
   WMedia,
   WOrganization,
+  WCard,
 }
 export default {
   // 导出的对象必须具有 install，才能被 Vue.use() 方法安装
