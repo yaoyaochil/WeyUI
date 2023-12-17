@@ -1,0 +1,31 @@
+name: Update Docs
+
+on:
+  push:
+    branches:
+      - main # 你的主分支名称
+
+jobs:
+  update-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set Up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20.10.0'
+
+    - name: Install Dependencies
+      run: npm install # 替换成你的文档构建所需的安装命令
+
+    - name: Build Docs
+      run: npm run docs:build # 替换成你的文档构建命令
+
+    - name: Deploy Docs to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs/.vitepress/dist # 替换成你的文档生成的目录
