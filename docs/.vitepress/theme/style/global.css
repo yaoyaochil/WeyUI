@@ -14,3 +14,8 @@
 .vp-doc .header-anchor:before {
     content: "";
 }
+
+.example-component {
+    background: #f2f3f5;
+    border-radius: 10px
+}

@@ -29,6 +29,11 @@ export default defineComponent({
       }
     )
 
+    const menuOption = inject('menuOption') as {
+      name: string
+      command: string | Function
+    }[]
+
     /**
      * 节点添加事件
      * @param e
@@ -130,6 +135,12 @@ export default defineComponent({
 
     // ============= 拖拽Node部分 ================
 
+    // ============= 右键菜单部分 ================
+    const onContextmenuShow = (command: {command:string,data:any,node:any}) => {
+      emit('on-menu-click', command)
+    }
+    // ============= 右键菜单部分 ================
+
     return {
       orgDataList,
       onNodeClick,
@@ -137,7 +148,9 @@ export default defineComponent({
       beforeDragEnd,
       onNodeDelete,
       onNodeEdit,
-      contextmenuClick
+      contextmenuClick,
+      menuOption,
+      onContextmenuShow
     }
   },
   render() {
@@ -148,7 +161,8 @@ export default defineComponent({
       beforeDragEnd,
       onNodeDelete,
       onNodeEdit,
-      contextmenuClick
+      menuOption,
+      onContextmenuShow
     } = this
     const slots = {
       nodeDraggable: false,
@@ -159,15 +173,8 @@ export default defineComponent({
       { name: '新增部门', command: 'add' },
       { name: '编辑部门', command: 'edit' },
       { name: '删除部门', command: 'delete' },
+      ...menuOption
     ]
-
-    // 当zm-tree-contextmenu元素出现时，给zm-tree-contextmenu元素添加圆角样式
-    const onContextmenuShow = (e: any) => {
-      const contextmenu = document.querySelector('.zm-tree-contextmenu') as any
-      if (contextmenu) {
-        contextmenu.style.borderRadius = '5px'
-      }
-    }
     
 
     return (
@@ -184,7 +191,7 @@ export default defineComponent({
           node-edit={onNodeEdit}
           onOn-node-click={onNodeClick}
           before-drag-end={beforeDragEnd}
-          on-contextmenu={(data:any)=>{console.log("呼出菜单")}}
+          onOn-contextmenu={onContextmenuShow}
         ></Vue3TreeOrg>
       </div>
     )

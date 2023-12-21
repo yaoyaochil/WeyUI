@@ -1,11 +1,18 @@
 <template>
-  <div style="padding: 20px; width: 100%; height: 500px">
-    <w-organization :data="data" @department-add="onDepartMentAdd" @department-delete="onDepartMentDel" @department-edit="onDepartMentEdit" />
+  <div class="base-content-org" style="padding: 20px; width: 100%; height: 500px">
+    <w-organization :data="data" :menu-option="menuOption" @department-add="onDepartMentAdd" @department-delete="onDepartMentDel" @department-edit="onDepartMentEdit" @on-menu-click="onMenuClick" />
+
+    <Modal v-model:visible="visible" :footer="false" hide-title :render-to-body="false">
+      <div style="padding: 20px; width: 100%; height: 500px">
+        <w-department-user :userList="userList" />
+      </div>
+    </Modal>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { h, ref } from 'vue'
+import { Modal } from '@arco-design/web-vue'
 
 interface OrganizationData {
     id: number;
@@ -13,6 +20,17 @@ interface OrganizationData {
     parentid: number;
     [key: string]: any;
 }
+
+const menuOption = [
+  {
+    name: '查看成员',
+    command: 'viewMember',
+  }
+] as { name: string; command: Function | string }[] | Function[]
+
+
+const visible = ref(false)
+
 
 // 添加部门事件
 const onDepartMentAdd = (data: { parentid: number }) => {
@@ -27,6 +45,14 @@ const onDepartMentDel = (data: { id: number }) => {
 // 编辑部门事件
 const onDepartMentEdit = (data: { id: number }) => {
   console.log('编辑部门事件：部门ID', data.id)
+}
+
+// 菜单点击事件 返回菜单command 和 节点数据
+const onMenuClick = (command:{command:string,data:Object,node:Object}) => {
+  console.log(command.command)
+  if (command.command === 'viewMember') {
+    visible.value = true
+  }
 }
 
 const data = ref<OrganizationData[]>([
@@ -87,6 +113,103 @@ const data = ref<OrganizationData[]>([
     order: 99996000,
   },
 ])
+
+const userList = ref([
+  {
+    id: 1,
+    avatar:
+      'https://moonwife.top/upload/2023/06/src%3Dhttp___c-ssl.duitang.com_uploads_blog_202105_09_20210509012315_89541.thumb.1000_0.jpeg%26refer%3Dhttp___c-ssl.duitang.webp',
+    nickName: '@Tim',
+    job: 'Creater & Design',
+    phone: '188********',
+  },
+  {
+    id: 2,
+    avatar: '',
+    nickName: 'Tim',
+    job: 'Creater & Design',
+    phone: '188********',
+  },
+  {
+    id: 3,
+    avatar: '',
+    nickName: 'Tim',
+    job: 'Creater & Design',
+    phone: '188********',
+  },
+  {
+    id: 4,
+    avatar: '',
+    nickName: 'Tim',
+    job: 'Creater & Design',
+    phone: '188********',
+  },
+  {
+    id: 5,
+    avatar: '',
+    nickName: 'Tim',
+    job: 'Creater & Design',
+    phone: '188********',
+  },
+  {
+    id: 6,
+    avatar: '',
+    nickName: 'Tim',
+    job: 'Creater & Design',
+    phone: '188********',
+  },
+  {
+    id: 7,
+    avatar: '',
+    nickName: 'Tim',
+    job: 'Creater & Design',
+    phone: '188********',
+  },
+  {
+    id: 8,
+    avatar: '',
+    nickName: 'Tim',
+    job: 'Creater & Design',
+    phone: '188********',
+  },
+  {
+    id: 9,
+    avatar: '',
+    nickName: 'Tim',
+    job: 'Creater & Design',
+    phone: '188********',
+  },
+  {
+    id: 10,
+    avatar: '',
+    nickName: 'Tim',
+    job: 'Creater & Design',
+    phone: '188********',
+  },
+] as {
+  id: number
+  avatar: string
+  nickName: string
+  job: string
+  phone: string
+}[])
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+</style>
+
+
+<style lang="scss">
+.base-content-org {
+  .arco-modal-container {
+    .arco-modal-wrapper {
+      .arco-modal {
+        width: 1000px;
+        .arco-modal-body {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+</style>

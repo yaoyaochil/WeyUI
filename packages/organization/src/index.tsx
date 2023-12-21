@@ -2,18 +2,24 @@ import { defineComponent, provide, ref } from "vue";
 import Address from "./components/address";
 import { OrganizationData } from "@/type/organization";
 import { Empty } from "@arco-design/web-vue";
+import { Component } from 'vue';
 
-export default defineComponent({
-  name: 'Organization',
+const WOrganization: Component = defineComponent({
+  name: 'WOrganization',
   props: {
     data: {
       type: Array,
       default: () => ([] as OrganizationData[] | unknown),
-    }
+    },
+    menuOption: {
+      type: Array,
+      default: () => ([] as any[]),
+    },
   },
-  emits: ['department-add', 'department-edit', 'department-delete'],
+  emits: ['department-add', 'department-edit', 'department-delete','on-menu-click'],
   setup(props,{emit}) {
     provide('emit', emit);
+    provide('menuOption', props.menuOption);
     return {
       props
     }
@@ -27,7 +33,6 @@ export default defineComponent({
       height: '100%',
       padding: '10px',
       boxSizing: 'border-box' as 'border-box',
-      boxShadow: '0 0 4px #ccc',
       cursor: 'pointer',
       overflow: 'auto',
       alignItems: 'center',
@@ -42,3 +47,5 @@ export default defineComponent({
     )
   }
 })
+
+export default WOrganization;
