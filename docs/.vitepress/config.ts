@@ -48,6 +48,9 @@ export default defineConfig({
               items: [
                 {
                   text: '组织架构', link: '/components/WOrganization/base.md'
+                },
+                {
+                  text: '成员管理', link: '/components/WDepartmentUser/base.md'
                 }
               ]
             }

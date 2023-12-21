@@ -1,5 +1,5 @@
 <template>
-  <div style="display: block;width: 100%;height: 100%" class="w-custom-menu">
+  <div  class="w-custom-menu">
     <a-row>
       <a-col :span="24">
         <w-custom-menu-header></w-custom-menu-header>

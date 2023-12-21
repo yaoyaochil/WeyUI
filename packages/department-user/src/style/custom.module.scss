@@ -1,0 +1,110 @@
+.user-list {
+  :global(.arco-input-wrapper) {
+    border-radius: 5px;
+    transition: all 0.5s;
+    input::placeholder {
+      font-size: 12px;
+    }
+  }
+  :global(.arco-input-focus) {
+    border-color: #8bc34a;
+  }
+  &-card-box {
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    // 去除滚动条
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    &-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      padding: 5px;
+      border-radius: 10px;
+      border: 2px solid #fff;
+      transition: all 0.5s;
+      cursor: pointer;
+      &:hover {
+        padding: 10px;
+        border: 2px solid #8bc34a;
+        .user-list-card-box-item-box-info-delete {
+          opacity: 1;
+        }
+      }
+      &:not(:hover) {
+        transition: all 0.5s; /* 添加移出时的过渡效果 */
+      }
+      &-box {
+        border-bottom: 1px solid #e8e8e8;
+        margin-right: 5px;
+        margin-left: 5px;
+        flex: 1;
+        display: flex;
+        &-info {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          flex: 1;
+          margin-left: 10px;
+          padding-right: 10px;
+          &-nickName {
+            font-size: 11px;
+            color: #333333;
+            font-weight: 400;
+            // 不允许换行  且超出部分省略号表示
+            white-space: nowrap;
+            overflow: hidden;
+          }
+          &-job {
+            font-size: 11px;
+            color: #646464;
+            // 不允许换行  且超出部分省略号表示
+            white-space: nowrap;
+            overflow: hidden;
+          }
+          &-delete {
+            font-size: 11px;
+            color: #646464;
+            // 置于底部
+            margin-top: auto;
+            margin-left: auto;
+            // 不允许换行  且超出部分省略号表示
+            white-space: nowrap;
+            overflow: hidden;
+            opacity: 0;
+            transition: opacity 0.5s;
+            :global(.arco-btn) {
+              padding: 1px;
+            }
+          }
+          &-phone {
+            font-size: 11px;
+            color: #646464;
+            // 置于底部
+            margin-top: auto;
+            margin-left: auto;
+            // 不允许换行  且超出部分省略号表示
+            white-space: nowrap;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.search-button {
+  :global(.arco-btn-text) {
+    color: rgb(78,89,105);
+    &:hover {
+      color: rgb(78,89,105);
+    }
+  }
+  :global(.arco-btn-loading){
+    color: rgb(78,89,105)!important;
+  }
+}
